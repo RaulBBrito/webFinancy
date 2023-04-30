@@ -1,0 +1,114 @@
+/*.space-top{
+  margin-top: 1.5rem;
+}
+.message-error{
+  color: #FF0000;
+}
+
+.cascading-right {
+  margin-right: -50px;
+}
+
+
+@media (min-width: 991.97px) {
+  .img-top{
+    margin-top: -100px;
+    background: hsla(0, 0%, 100%, 0.8);
+    backdrop-filter: blur(30px);
+    display: block;
+  }
+}
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+  .body-img{
+    display: none;
+  }
+  .img-top{
+    display: none;
+  }
+}
+
+
+
+*/
+
+
+.my-login-page-content {
+  font-size: 14px;
+}
+.my-login-page-content .brand{
+  width: 90px !important;
+  height: 90px !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+  margin: 40px auto !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,.05) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.my-login-page-content .brand img {
+  width: 100%;
+}
+
+.my-login-page-content .card-wrapper {
+  width: 400px;
+
+  margin: 0 auto;
+}
+
+.my-login-page-content .card {
+  border-color: transparent;
+  box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page-content .card.fat {
+  padding: 10px;
+}
+
+.my-login-page-content .card .card-title {
+  margin-bottom: 30px;
+}
+
+.my-login-page-content .form-control {
+  border-width: 2.3px;
+}
+
+.my-login-page-content .form-group label {
+  width: 100%;
+}
+
+.my-login-page-content .btn.btn-block {
+  padding: 12px 10px;
+}
+
+.my-login-page-content .footer {
+  margin: 40px 0;
+  color: #888;
+  text-align: center;
+}
+.invalid-feedback {
+  position: inherit !important;
+}
+#div-space{
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .my-login-page-content .card-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .my-login-page-content .card.fat {
+    padding: 0;
+  }
+
+  .my-login-page-content .card.fat .card-body {
+    padding: 15px;
+  }
+}

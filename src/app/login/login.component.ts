@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Login } from '@app/core/models';
-import { LoginService } from '../services/login.service';
+import { LoginService } from '@app/auth/services/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   message!:string;
 
-  constructor(
+  formulario!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
     private route: ActivatedRoute
@@ -27,6 +31,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.formulario = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+
     this.route.queryParams
     .subscribe(params =>{
       this.message = params['error'];
@@ -35,7 +44,7 @@ export class LoginComponent implements OnInit {
 
   logar(): void {
     this.loading = true;
-    if(this.formLogin.form.valid){
+    if(this.formulario.valid){
       this.loginService.login(this.login).subscribe((usu) => {
         if(usu != null) {
           this.loginService.usuarioLogado = usu;

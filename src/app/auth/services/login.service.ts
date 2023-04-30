@@ -20,18 +20,18 @@ export class LoginService {
     localStorage[LS_CHAVE] = JSON.stringify(usuario);
   }
   logout(){
-    delete localStorage[LS_CHAVE];
+    delete localStorage[LS_CHAVE]; 
   }
 
   login(login: Login): Observable<Usuario | null>{
-    let usu = new Usuario(1, "Raul Brito", login.login, login.senha, "FUNC");
+    let usu = new Usuario(1, "Raul Brito", login.email, login.password, "FUNC");
 
-    if(login.login == login.senha){
-      if(login.login == "admin"){
-        usu = new Usuario(1, "Raul ADMIN", login.login, login.senha, "ADMIN");
+    if(login.email == login.password){
+      if(login.email == "admin"){
+        usu = new Usuario(1, "Raul ADMIN", login.email, login.password, "ADMIN");
       }
-      else if(login.login == "gerente"){
-        usu = new Usuario(1, "Raul GERENTE", login.login, login.senha, "GERENTE");
+      else if(login.email == "gerente"){
+        usu = new Usuario(1, "Raul GERENTE", login.email, login.password, "GERENTE");
       }
       return of(usu);
     }else{
