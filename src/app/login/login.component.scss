@@ -96,6 +96,11 @@
   display: none;
 }
 
+.btn-acao{
+  color: #3b71ca;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 600px) {
   .my-login-page-content .card-wrapper {
     width: 100%;

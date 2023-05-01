@@ -146,12 +146,12 @@
           <img src="../../assets/img/logo.jpg" alt="logo">
         </div>
         <div class="card fat">
-          <div class="card-body">
+          <div class="card-body" *ngIf="isLogin">
             <h4 class="card-title">Login</h4>
             <form class="my-login-validation" [formGroup]="formulario" novalidate="">
               <div class="form-group" style="margin-bottom: 1rem;">
                 <label for="email">E-Mail</label>
-                <input id="email" type="email" class="form-control" name="email" value="" required autofocus
+                <input id="email" type="email" [(ngModel)]="formularioLogin.email" class="form-control" name="email" value="" required autofocus
                 formControlName="email">
                 
                 <div class="invalid-feedback"> Formato de email invalido!</div>
@@ -164,7 +164,7 @@
                   </a>
                 </label>
                 
-                <input id="password" type="password" class="form-control" name="password" required data-eye
+                <input id="password" [(ngModel)]="formularioLogin.password"  type="password" class="form-control" name="password" required data-eye
                 formControlName="password">
                 <div class="invalid-feedback" >A senha é obrigatória!</div>
               </div>
@@ -184,10 +184,65 @@
                 
               </div>
               <div class="mt-4 text-center">
-                Não tem uma conta? <a href="register.html">Criar conta</a>
+                Não tem uma conta? <span class="btn-acao" (click)="getPagina()">Criar conta</span>
               </div>
             </form>
           </div>
+
+          <!--CADASTRO-->
+          <div class="card-body" *ngIf="!isLogin">
+            <h4 class="card-title">Cadastrar</h4>
+            <form class="my-login-validation" [formGroup]="formularioCadastro" novalidate="">
+              
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input id="nome" 
+                      type="nome" 
+                      class="form-control" 
+                      value="Raul Brito"
+                      name="nome" required data-eye
+                      formControlName="nome">
+                <div class="invalid-feedback" >O nome é obrigatório!</div>
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="email">E-Mail</label>
+                <input id="email" type="email" class="form-control" name="email" value="" required autofocus
+                formControlName="email">
+                
+                <div class="invalid-feedback"> Formato de email invalido!</div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Senha <a href="forgot.html" class="float-right"> Esqueceu a senha?</a></label>
+                <input id="password" 
+                      type="password" 
+                      class="form-control" 
+                      name="password" required data-eye
+                      formControlName="password">
+                <div class="invalid-feedback" >A senha é obrigatória!</div>
+              </div>
+
+              <div class="form-group">
+                <div class="custom-checkbox custom-control">
+                  <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                  <label for="remember" class="custom-control-label" style="padding-top: 5px;">Permanecer conectado</label>
+                </div>
+              </div>
+
+              <div class="form-group m-0">
+                <button type="submit" class="btn btn-primary btn-block"
+                (click)="cadastrar()">
+                  Cadastrar
+                </button>
+                
+              </div>
+              <div class="mt-4 text-center">
+                <div class="btn-acao" (click)="getPagina()">Voltar para o login</div>
+              </div>
+            </form>
+          </div>
+
         </div>
         <div class="footer">
           Copyright &copy; 2023 &mdash; NEW - Novo Estilo Web

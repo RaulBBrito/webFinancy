@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "dashboardAngularMaterial": {
+    "api-finance": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-spinner/animations/ball-beat.css", 
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/css/mdb.min.css",
               "src/styles.scss"
@@ -72,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "dashboardAngularMaterial:build:production"
+              "browserTarget": "api-finance:build:production"
             },
             "development": {
-              "browserTarget": "dashboardAngularMaterial:build:development"
+              "browserTarget": "api-finance:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dashboardAngularMaterial:build"
+            "browserTarget": "api-finance:build"
           }
         },
         "test": {

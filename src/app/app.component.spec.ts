@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'dashboardAngularMaterial'`, () => {
+  it(`should have as title 'api-finance'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('dashboardAngularMaterial');
+    expect(app.title).toEqual('api-finance');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('dashboardAngularMaterial app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('api-finance app is running!');
   });
 });

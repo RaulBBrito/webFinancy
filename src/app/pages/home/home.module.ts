@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { RelatorioComponent } from './components/relatorio/relatorio.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { RelatorioComponent } from './components/relatorio/relatorio.component';
     SharedModule,
     HomeRoutingModule,
     HttpClientModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgxSpinnerModule
   ]
 })
 export class HomeModule { }
