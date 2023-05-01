@@ -4,7 +4,6 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { LoadingComponent } from '@app/shared/components/loading/loading.component';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { finalize, share} from 'rxjs/operators';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,7 @@ export class SpinnerService {
   
   constructor(
     private overlay: Overlay,
-    private ngZone: NgZone,
-    private spinner: NgxSpinnerService){
+    private ngZone: NgZone){
 
   }
 
@@ -30,12 +28,7 @@ export class SpinnerService {
   }).pipe(share());
 
   public show(): void {
-
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 5000);
-    /*Promise.resolve(null).then(() => {
+    Promise.resolve(null).then(() => {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay
           .position()
@@ -45,7 +38,7 @@ export class SpinnerService {
         hasBackdrop: true,  
       });
       this.overlayRef.attach(new ComponentPortal(LoadingComponent))
-    })*/
+    })
   }
 
 

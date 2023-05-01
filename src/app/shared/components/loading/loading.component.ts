@@ -16,13 +16,13 @@ export class LoadingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     setTimeout(() => {
-      //this.ngZone.run(() => this.spinner.show())
+      this.ngZone.run(() => this.spinnerService.show())
     });
   }
 
   ngOnDestroy(): void {
     setTimeout(() => {
-      //this.ngZone.run(() => this.spinner.hide())
+      this.ngZone.run(() => this.spinnerService.hide())
     });
   }
 

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './modules';
 import { LayoutModule } from './layout';
 import { LoadingComponent } from './components/loading/loading.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,15 @@ import { LoadingComponent } from './components/loading/loading.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    LayoutModule
+    LayoutModule,
+    NgxSpinnerModule
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    LayoutModule
+    LayoutModule,
+    NgxSpinnerModule
   ],
   schemas: []
 })

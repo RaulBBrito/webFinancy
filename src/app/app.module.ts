@@ -1,6 +1,5 @@
-import { Config,  } from './../environments/Config/typeconfig';
 import { ApiConfiguration } from './core/services/api/api-configuration';
-import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +38,6 @@ import Configs from './envconfig/Configs';
     { provide: APP_BASE_HREF, useValue: '' },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

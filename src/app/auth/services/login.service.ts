@@ -86,12 +86,12 @@ export class LoginService extends BaseService {
           .pipe(
             tap((user) => {
             this.loginRxService.onIsLoading.next(false);
-              //this.ngZone.run(() => spinnerSubscription.unsubscribe());
+            this.ngZone.run(() => spinnerSubscription.unsubscribe());
           }),
             catchError((error) => {
               this.errorHandle(error);
               this.loginRxService.onIsLoading.next(false);
-              //this.ngZone.run(() => spinnerSubscription.unsubscribe());
+            this.ngZone.run(() => spinnerSubscription.unsubscribe());
               return throwError(error);
             })
           )
