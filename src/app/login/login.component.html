@@ -145,28 +145,50 @@
         <div class="brand"> <!-- style="text-align: center;"-->
           <img src="../../assets/img/logo.jpg" alt="logo">
         </div>
+
+        <h2 class="card-title" style="text-align: center; margin: -30px 0 30px;">
+          <span style="color:  #84c186; font-weight: bold;">My</span> <span style="font-weight: bold; color:  #135d8e;"> Financy</span>
+        </h2>
+
         <div class="card fat">
-          <div class="card-body" *ngIf="isLogin">
-            <h4 class="card-title">Login</h4>
+          <div class="card-body">
+            <h4 class="card-title" style="text-align: center;">Login</h4>
             <form class="my-login-validation" [formGroup]="formulario" novalidate="">
               <div class="form-group" style="margin-bottom: 1rem;">
-                <label for="email">E-Mail</label>
-                <input id="email" type="email" [(ngModel)]="formularioLogin.email" class="form-control" name="email" value="" required autofocus
+                <label for="email">E-Mail:</label>
+                <input id="email" type="email" class="form-control" name="email" value="" required autofocus
                 formControlName="email">
                 
                 <div class="invalid-feedback"> Formato de email invalido!</div>
               </div>
 
               <div class="form-group">
-                <label for="password">Senha
-                  <a href="forgot.html" class="float-right">
+                <label for="password">Senha:
+                  <!--<a href="forgot.html" class="float-right">
                     Esqueceu a senha?
-                  </a>
+                  </a>-->
                 </label>
-                
-                <input id="password" [(ngModel)]="formularioLogin.password"  type="password" class="form-control" name="password" required data-eye
+                <input id="password" type="password" class="form-control" name="password" required data-eye
                 formControlName="password">
-                <div class="invalid-feedback" >A senha é obrigatória!</div>
+                <div class="invalid-feedback">A senha é obrigatória!</div>
+
+                
+                
+                  <!--<div class="input-group">
+                    <input id="password" 
+                        type="password" 
+                        class="form-control" 
+                        name="password" required data-eye
+                        formControlName="password">
+                    <span class="input-group-btn">
+                      <button class="btn btn-primary btn-sm" style="right: 0px; 
+                      top: 0px; 
+                      padding: 12px 7px; 
+                      font-size: 12px; 
+                      cursor: pointer;" type="button" (click)="mostraSenha()">mostrar</button>
+                    </span>
+                  </div>
+                <div class="invalid-feedback" style="margin-top: 0.2rem !important;" >A senha é obrigatória!</div>-->
               </div>
 
               <div class="form-group">
@@ -178,56 +200,68 @@
 
               <div class="form-group m-0">
                 <button type="submit" class="btn btn-primary btn-block"
+                [disabled]="!formulario.valid"
                 (click)="logar()">
-                  Login
+                <i class="fa fa-share" aria-hidden="true"></i> Entrar
                 </button>
                 
               </div>
-              <div class="mt-4 text-center">
+              <!--<div class="mt-4 text-center">
                 Não tem uma conta? <span class="btn-acao" (click)="getPagina()">Criar conta</span>
-              </div>
+              </div> -->
             </form>
           </div>
 
-          <!--CADASTRO-->
+          <!--CADASTRO-- >
           <div class="card-body" *ngIf="!isLogin">
             <h4 class="card-title">Cadastrar</h4>
             <form class="my-login-validation" [formGroup]="formularioCadastro" novalidate="">
               
               <div class="form-group">
-                <label for="nome">Nome</label>
-                <input id="nome" 
-                      type="nome" 
+                <label for="nomecad">Nome</label>
+                <input id="nomecad" 
+                      type="nomecad" 
                       class="form-control" 
                       value="Raul Brito"
-                      name="nome" required data-eye
-                      formControlName="nome">
+                      name="nomecad" required data-eye
+                      formControlName="nomecad">
                 <div class="invalid-feedback" >O nome é obrigatório!</div>
               </div>
               
               <div class="form-group" style="margin-bottom: 1rem;">
-                <label for="email">E-Mail</label>
-                <input id="email" type="email" class="form-control" name="email" value="" required autofocus
-                formControlName="email">
+                <label for="emailcad">E-Mail</label>
+                <input id="emailcad" type="emailcad" class="form-control" name="emailcad" value="" required autofocus
+                formControlName="emailcad">
                 
                 <div class="invalid-feedback"> Formato de email invalido!</div>
               </div>
 
               <div class="form-group">
                 <label for="password">Senha <a href="forgot.html" class="float-right"> Esqueceu a senha?</a></label>
-                <input id="password" 
+                < !--<input id="password" 
                       type="password" 
                       class="form-control" 
-                      name="password" required data-eye
-                      formControlName="password">
-                <div class="invalid-feedback" >A senha é obrigatória!</div>
-              </div>
+                      name="passwordcad" required data-eye-cad
+                      formControlName="password">-- >
 
-              <div class="form-group">
-                <div class="custom-checkbox custom-control">
-                  <input type="checkbox" name="remember" id="remember" class="custom-control-input">
-                  <label for="remember" class="custom-control-label" style="padding-top: 5px;">Permanecer conectado</label>
-                </div>
+
+                      <div class="input-group">
+                        <input id="password" 
+                            type="password" 
+                            class="form-control" 
+                            name="passwordcadastro" required
+                            formControlName="password">
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary btn-sm" style="right: 0px; 
+                          top: 0px; 
+                          padding: 11px 7px; 
+                          font-size: 12px; 
+                          cursor: pointer;" type="button" (click)="mostraSenhaCadastro()">mostrar</button>
+                        </span>
+                      </div>
+
+
+                      <div class="invalid-feedback" >A senha é obrigatória!</div>
               </div>
 
               <div class="form-group m-0">
@@ -241,7 +275,7 @@
                 <div class="btn-acao" (click)="getPagina()">Voltar para o login</div>
               </div>
             </form>
-          </div>
+          </div>-->
 
         </div>
         <div class="footer">
