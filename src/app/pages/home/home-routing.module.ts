@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { AuthGuard } from '@app/auth/auth.guard';
 import { RelatorioComponent } from './components/relatorio/relatorio.component';
 
 const routes: Routes = [

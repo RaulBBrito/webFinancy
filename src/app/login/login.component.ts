@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Login, Usuario } from '@app/core/models';
+import { Component, OnInit } from '@angular/core';
+import { Login} from '@app/core/models';
 import { LoginService } from '@app/auth/services/login.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
