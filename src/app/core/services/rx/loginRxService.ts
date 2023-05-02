@@ -1,6 +1,5 @@
-
 import { Injectable } from '@angular/core';
-import { ApiConfiguratioInterface, ITokenInterface } from '@app/core/interfaces';
+import { ITokenInterface } from '@app/core/interfaces';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

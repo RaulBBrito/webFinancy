@@ -5,7 +5,6 @@ import { HeaderComponent } from './shared/layout';
 import { CommonModule } from '@angular/common';
 import { LoginRoutes } from './auth/auth-routing.module';
 import { AuthGuard } from './auth/auth.guard';
-import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   
   
@@ -28,7 +27,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)],
+    RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
 })
 export class AppRoutingModule { }

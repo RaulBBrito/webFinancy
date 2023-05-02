@@ -1,0 +1,8 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/f128ae9f-3451-4c71-8a61-72e2f4d7737f/resourceGroups/EstudoAngular/providers/Microsoft.Web/sites/MyFinancy",
+  "appService.deploySubpath": ".",
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ]
+}

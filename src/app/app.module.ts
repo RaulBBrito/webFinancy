@@ -1,7 +1,6 @@
 import { ApiConfiguration } from './core/services/api/api-configuration';
 import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,15 +13,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LocatorService } from './core/services';
 import Configs from './envconfig/Configs';
-import { CadastroComponent } from './login/cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    CadastroComponent
+    LoginComponent
   ],
   imports: [
     FormsModule,
