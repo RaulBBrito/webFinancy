@@ -34,7 +34,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-          ]
+              "src/assets/js/my-login.js"
+            ]
           },
           "configurations": {
             "production": {

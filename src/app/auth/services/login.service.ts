@@ -1,20 +1,24 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Usuario, Login } from '@app/core';
+import { Usuario, Login, ErrorApiModel } from '@app/core';
 import { ApiConfiguration } from '@app/core/services/api/api-configuration';
 import { BaseService } from '@app/core/services/base.service';
 import { ErrosService } from '@app/core/services/erros.service';
 import { LoginRxService } from '@app/core/services/rx/loginRxService';
 import { SpinnerService } from '@app/core/services/spinner.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { EMPTY, Observable, of, throwError, Subscription } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
-const LS_CHAVE: string = "usuarioLogado";
+
+const TOKEN: string = "token";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService extends BaseService {
+
+  erroSessao!: ErrorApiModel;
 
   httpOption = {
     headers: new HttpHeaders({
@@ -41,19 +45,38 @@ export class LoginService extends BaseService {
     return `${super.loginUrl}`;
   }
 
-  public get usuarioLogado(): Usuario {
-    let usu = localStorage[LS_CHAVE];
-    return (usu ? JSON.parse(localStorage[LS_CHAVE]) : null);
+  public getUsuarioLogado(): Usuario | null {
+    let token = localStorage[TOKEN];
+    const helper = new JwtHelperService();
+    if(token){
+      if(helper.isTokenExpired(token)){
+        this.errorHandle({status: 403});
+      }else{
+        let usuarioToken = helper.decodeToken(token);
+        return new Usuario(null, usuarioToken?.data?.nome, usuarioToken?.data?.email, '', "ADMIN");
+      }
+    }
+
+    return null;
+
+    /*let usuarioToken = (token ? JSON.parse(localStorage[TOKEN]) : null);
+    //let usu = new Usuario(null, 'Raul Brito ', 'email@email', '', "ADMIN");
+    return usuarioToken;*/
+
   }
 
-  public set usuarioLogado(usuario: Usuario){
-    localStorage[LS_CHAVE] = JSON.stringify(usuario);
-  }
-  logout(){
-    delete localStorage[LS_CHAVE]; 
+  /*public setUsuarioLogado(usuario: Usuario){
+    localStorage[TOKEN] = JSON.stringify(usuario);
+  }*/
+  /*logout(){
+    delete localStorage[TOKEN]; 
+  }*/
+
+  logout() {
+    delete localStorage[TOKEN]; 
   }
 
-  login_old(login: Login): Observable<Usuario | null>{
+  /*login_old(login: Login): Observable<Usuario | null>{
     let usu = new Usuario(1, "Raul Brito", login.email, login.password, "FUNC");
 
     if(login.email == login.password){
@@ -67,10 +90,9 @@ export class LoginService extends BaseService {
     }else{
       return of(usu);
     }
-  }
+  }*/
 
   cadastrar(usuario: Usuario): Observable<Usuario | null>{
-    //return this.efetuarLogin();
     let usu = new Usuario(null, usuario.nome, usuario.email, usuario.senha, "ADMIN");
     return of(usu);
   }
@@ -78,20 +100,18 @@ export class LoginService extends BaseService {
   login(login: Login): Observable<any>{
     const spinnerSubscription: Subscription = this.spinner.spinner$.subscribe();
     this.loginRxService.onIsLoading.next(true);
-    let usuario: any ={
-      username: login.email,
-      password: login.password      
-    };
-    return this.post<any, any>(`/login`, usuario, null, this.httpOption)
+    return this.post<any, any>(`/login`, {username:login.email,password:login.password}, null, this.httpOption)
           .pipe(
-            tap((user) => {
+            tap((token) => {
+              //let usu = new Usuario(null, 'Raul Brito ', 'email@email', '', "ADMIN");
+              localStorage[TOKEN] = JSON.parse(JSON.stringify(token.token));
             this.loginRxService.onIsLoading.next(false);
             this.ngZone.run(() => spinnerSubscription.unsubscribe());
           }),
             catchError((error) => {
               this.errorHandle(error);
               this.loginRxService.onIsLoading.next(false);
-            this.ngZone.run(() => spinnerSubscription.unsubscribe());
+              this.ngZone.run(() => spinnerSubscription.unsubscribe());
               return throwError(error);
             })
           )

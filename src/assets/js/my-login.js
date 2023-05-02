@@ -34,7 +34,7 @@ $(function() {
 		}));
 
 		$this.css({
-			paddingRight: 60
+			paddingRight: 0
 		});
 		$this.after($("<div/>", {
 			html: 'Mostrar',
@@ -42,9 +42,9 @@ $(function() {
 			id: 'passeye-toggle-'+i,
 		}).css({
 				position: 'absolute',
-				right: 10,
-				top: ($this.outerHeight() / 2) - 12,
-				padding: '2px 7px',
+				right: 0,
+				top: 0 ,//($this.outerHeight() / 2) - 12,
+				padding: '10px 7px',
 				fontSize: 12,
 				cursor: 'pointer',
 		}));
@@ -67,12 +67,12 @@ $(function() {
 			if($this.hasClass("show")) {
 				$this.attr('type', 'password');
 				$this.removeClass("show");
-				$(this).removeClass("btn-outline-primary");
+				//$(this).removeClass("btn-outline-primary");
 			}else{
 				$this.attr('type', 'text');
 				$this.val($("#passeye-"+i).val());				
 				$this.addClass("show");
-				$(this).addClass("btn-outline-primary");
+				//$(this).addClass("btn-outline-primary");
 			}
 		});
 	});

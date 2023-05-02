@@ -11,16 +11,18 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LocatorService } from './core/services';
 import Configs from './envconfig/Configs';
+import { CadastroComponent } from './login/cadastro/cadastro.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CadastroComponent
   ],
   imports: [
     FormsModule,

@@ -1,12 +1,10 @@
-<p>HOME</p>
 <button type="button" class="btn btn-primary"
           (click)="logout()">
-          <i class="fa fa-save" aria-hidden="true"></i> Logar
+          <i class="fa fa-save" aria-hidden="true"></i> Sair
       </button>
-<div *ngIf="usuarioLogado">
-
-  <div *ngIf="usuarioLogado.perfil==='ADMIN'"> USUARIO ADMIN</div>
-  <div *ngIf="usuarioLogado.perfil==='GERENTE'"> USUARIO GERENTE</div>
-  <div *ngIf="usuarioLogado.perfil==='FUNC'"> USUARIO FUNC</div>
+<div *ngIf="usuarioSessao">
+  <div *ngIf="usuarioSessao.perfil==='ADMIN'"> USUARIO ADMIN</div>
+  <div *ngIf="usuarioSessao.perfil==='GERENTE'"> USUARIO GERENTE</div>
+  <div *ngIf="usuarioSessao.perfil==='FUNC'"> USUARIO FUNC</div>
 
 </div>

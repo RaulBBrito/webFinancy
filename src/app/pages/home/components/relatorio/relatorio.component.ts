@@ -15,17 +15,15 @@ export class RelatorioComponent implements OnInit {
     private router: Router,
     private loginService: LoginService
   ) { }
-    get usuarioLogado(): Usuario | null {
-      return this.usuarioSessao = this.loginService.usuarioLogado;
-    }
 
     logout(){
       this.loginService.logout();
       this.router.navigate(['/login']);
+      location.reload();
     }
 
     ngOnInit(): void {
-      
+      this.usuarioSessao = this.loginService.getUsuarioLogado();
     }
 
 }
