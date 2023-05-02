@@ -1,9 +1,10 @@
+<h2>Pagina HOME</h2>
 <button type="button" class="btn btn-primary"
           (click)="logout()">
           <i class="fa fa-save" aria-hidden="true"></i> Sair
       </button>
-<div *ngIf="usuarioSessao">
-  <div *ngIf="usuarioSessao.perfil==='ADMIN'"> USUARIO ADMIN</div>
+<div *ngIf="usuarioSessao" style="margin-top: 20px;">
+  <div *ngIf="usuarioSessao.perfil==='ADMIN'"> USUARIO: {{usuarioSessao.nome}} - Perfil: ADMIN</div>
   <div *ngIf="usuarioSessao.perfil==='GERENTE'"> USUARIO GERENTE</div>
   <div *ngIf="usuarioSessao.perfil==='FUNC'"> USUARIO FUNC</div>
 
