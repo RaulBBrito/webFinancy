@@ -8,7 +8,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
-  
+    
     LoadingComponent
   ],
   imports: [
