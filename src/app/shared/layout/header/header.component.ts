@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-interface Mes {
+export interface Mes {
   mes: string;
   descricao_mes: string;
   ano: string;
 }
 
-interface Car {
-  value: string;
-  viewValue: string;
+export interface ValoresHeader {
+  renda: string;
+  despesa: string;
+  cartao: string;
 }
 
 @Component({
@@ -23,6 +24,12 @@ export class HeaderComponent implements OnInit {
   mesAnoSelecionado: Mes;
   mesesAno: Mes[] = [];
   mesAtual: Mes;
+
+  valores:ValoresHeader = {
+    renda: 'R$ 2678,00',
+    despesa: 'R$ 1.026,92',
+    cartao: 'R$ 141,60'
+  } 
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({

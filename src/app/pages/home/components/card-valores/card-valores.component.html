@@ -1,13 +1,13 @@
-<div class="card-container">
-  <div class="font-data">
-    <div>15</div>
-    <span>Jun</span>
+<div class="card-container {{tipoCard ? 'card-container-despesas': ''}}">
+  <div class="{{tipoCard ? 'color-white': ''}} font-data">
+    <div>{{card.dia}}</div>
+    <span>{{card.mes}}</span>
   </div>
   <div class="font-descricao">
-      <div>Salário Quizenal</div>
-      <div class="{{statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">recebido em 15/jun</div>
+      <div class="{{tipoCard ? 'color-white': ''}}">{{card.descricao}}</div>
+      <div class="{{card.statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">{{card.descricaoStatus}}</div>
   </div>
-  <div class="font-valor color-green">
-    <span >+ R$ 748,00</span>
+  <div class="font-valor {{tipoCard ? 'color-red': 'color-green'}}">
+    <span>{{card.valor}}</span>
   </div>
 </div>

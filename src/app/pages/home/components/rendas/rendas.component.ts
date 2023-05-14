@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Card } from '@app/core/interfaces';
 @Component({
   selector: 'app-rendas',
   templateUrl: './rendas.component.html',
@@ -7,16 +7,5 @@ import { Component } from '@angular/core';
 })
 export class RendasComponent {
 
-  rendas: string[] = [
-    'Salário Porto quizenal',
-    'Salário Porto mensal',
-    'Extra FS quizenal',
-    'Extra FS mensal',
-    'Salário Porto mensal',
-    'Extra FS quizenal',
-    'Extra FS mensal',
-    'Salário Porto mensal',
-    'Extra FS quizenal',
-    'Extra FS mensal',
-  ];
+  @Input() rendas: Card[] = [];
 }

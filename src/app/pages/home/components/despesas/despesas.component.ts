@@ -1,16 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Card } from '@app/core/interfaces';
 @Component({
   selector: 'app-despesas',
   templateUrl: './despesas.component.html',
   styleUrls: ['./despesas.component.scss']
 })
 export class DespesasComponent {
-  despesas: string[] = [
-    'Salário Porto quizenal',
-    'Salário Porto mensal',
-    'Extra FS quizenal',
-    'Extra FS mensal',
-    'Salário Porto mensal',
-  ];
+
+  @Input() despesas: Card[] = [];
 }

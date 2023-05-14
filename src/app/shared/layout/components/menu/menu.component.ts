@@ -15,8 +15,6 @@ export class MenuComponent {
   }
   logout(){
     this.loginService.logout();
-    this.router.navigate(['/login']);
-    location.reload();
   }
 
 }

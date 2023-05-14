@@ -1,21 +1,32 @@
-<div mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+<div mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu" class="menu-open">
   <mat-icon>reorder</mat-icon>
 </div>
 <mat-menu #menu="matMenu">
+  <div class="perfil-row">
+    <div class="foto-user">
+      <mat-icon>account_box</mat-icon>
+    </div>
+    <div class="perfil-column">
+        <span class="nome-user">Raul Brito</span>
+        <span>raulbbrito@hotmail.com</span>
+    </div>
+  </div>
   <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
   </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
+  <button mat-menu-item>
+    <mat-icon>account_circle</mat-icon>
+    <span>Perfil</span>
+  </button>
+
+  <button mat-menu-item>
+    <mat-icon>insert_chart</mat-icon>
+    <span>Relatorio</span>
   </button>
   <button mat-menu-item (click)="logout()">
-    <mat-icon>notifications_off</mat-icon>
-    <span>Sair</span>
-  </button>
-  <button mat-menu-item (click)="logout()">
-    <i class="fa fa-save" aria-hidden="true"></i>
+    <!--<i class="fa fa-save" aria-hidden="true"></i>-->
+    <mat-icon>meeting_room</mat-icon>
     <span>Sair</span>
   </button>
 
