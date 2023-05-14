@@ -1,0 +1,71 @@
+.content-home{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.header-valores{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header-home{
+  height: 65px;
+  background: linear-gradient(182.08deg, #125C8E 28.6%, #0A4065 91.11%); 
+  height: 188px; 
+  
+}
+.color-white{
+  color:#FFFFFF;
+}
+.header-home .content-home{
+  height: 65px;
+}
+.barra-lateral{
+  border-right: 1px solid #C4C4C4;
+}
+.header-valores div{
+  width: 33%;
+}
+.header-valores{
+  text-align: center;
+  padding: 10px 15px;
+  background: #FFFDFD;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: -35px 20px 0;
+}
+.header-valores .titulo-valores{
+  color: #909090
+}
+.titulo-saldo{
+  text-align: center;
+}
+
+.cor-vermelho{
+  color: #FF5757;
+}
+
+.cor-verde{
+  color:#5CBA60;
+}
+
+.valores{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.titulo-saldo span{
+  font-size: 30px;
+}
+.select-buttom {
+  margin-top: 23px;
+}
+
+
+

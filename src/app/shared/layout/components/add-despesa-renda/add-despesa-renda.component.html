@@ -1,0 +1,61 @@
+<img src="../../assets/img/ico-add.png" class="adicionar-item" alt="adicionar" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+
+<!-- Modal -->
+<div class="modal top fade " id="exampleModal" tabindex="-1" 
+  aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">CADASTRAR DESPESA</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
+      <div class="modal-body">
+            <app-input-customer
+              label="Titulo da despesa"
+              placeholder=""
+              type="text"
+              [required]="true"
+              [control]="$any(formData.get('tituloDespesa'))"></app-input-customer>
+            <app-input-customer
+              label="Valor da despesa"
+              placeholder="0,00"
+              type="text"
+              [required]="true"
+              [control]="$any(formData.get('valorDespesa'))"></app-input-customer>
+            <app-input-customer
+              label="Categoria"
+              placeholder="Selecione a categoria"
+              [type]="'select'"
+              [value]="tipoCategoria"
+              [control]="$any(formData.get('categoria'))"></app-input-customer>
+            <app-input-customer
+              label="Data de vencimento"
+              placeholder=""
+              type="text"
+              [required]="true"
+              [control]="$any(formData.get('dataVencDespesa'))"></app-input-customer>
+            <app-input-customer
+              label="Data de pagamento"
+              placeholder=""
+              type="text"
+              [required]="true"
+              [control]="$any(formData.get('dataPagDespesa'))"></app-input-customer>
+            <app-input-customer
+              label="Descrição"
+              placeholder=""
+              type="text"
+              [required]="true"
+              [control]="$any(formData.get('descricaoDespesa'))"></app-input-customer>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-primary" [disabled]="formData.invalid" data-mdb-dismiss="modal">Salvar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+

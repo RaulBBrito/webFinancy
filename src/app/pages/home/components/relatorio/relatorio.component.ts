@@ -10,6 +10,7 @@ import { LoginService } from '@app/auth/services/login.service';
 export class RelatorioComponent implements OnInit {
 
   usuarioSessao: any;
+
   constructor(
     private router: Router,
     private loginService: LoginService
@@ -23,6 +24,9 @@ export class RelatorioComponent implements OnInit {
 
     ngOnInit(): void {
       this.usuarioSessao = this.loginService.getUsuarioLogado();
+      if(this.usuarioSessao == null){
+        this.logout();
+      }
     }
 
 }

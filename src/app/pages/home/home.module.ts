@@ -7,11 +7,19 @@ import { HomeComponent } from './home.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { RelatorioComponent } from './components/relatorio/relatorio.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DespesasComponent } from './components/despesas/despesas.component';
+import { RendasComponent } from './components/rendas/rendas.component';
+import { TabsModule } from '@app/shared/components/tabs';
+import { CardValoresComponent } from './components/card-valores/card-valores.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    RelatorioComponent
+    RelatorioComponent,
+    DespesasComponent,
+    RendasComponent,
+    CardValoresComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +27,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HomeRoutingModule,
     HttpClientModule,
     MatBadgeModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTabsModule,
+    TabsModule
   ]
 })
 export class HomeModule { }
