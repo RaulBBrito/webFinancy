@@ -1,44 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavegacionComponent } from './navegacion/navegacion.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatCardModule } from '@angular/material/card';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { ComponentsModule } from '../components/components.module';
-import { LoginComponent } from './login/login.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './modules';
+import { LayoutModule } from './layout';
+import { LoadingComponent } from './components/loading/loading.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
-    NavegacionComponent,
-    DashboardComponent,
-    LoginComponent
+    
+    LoadingComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatPaginatorModule,
-    ComponentsModule
+    NgxSpinnerModule
   ],
   exports: [
-    NavegacionComponent,
-    LoginComponent
-  ]
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    LayoutModule,
+    NgxSpinnerModule
+  ],
+  schemas: []
 })
 export class SharedModule { }

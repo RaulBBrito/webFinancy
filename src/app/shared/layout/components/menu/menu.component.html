@@ -1,0 +1,22 @@
+<div mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>reorder</mat-icon>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Sair</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <i class="fa fa-save" aria-hidden="true"></i>
+    <span>Sair</span>
+  </button>
+
+</mat-menu>

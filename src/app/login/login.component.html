@@ -1,0 +1,58 @@
+<section class="my-login-page-content">
+  <div class="container h-100">
+    <div class="row justify-content-md-center h-100" >
+      <div class="card-wrapper" >
+        <div class="brand">
+          <img src="../../assets/img/logo.jpg" alt="logo">
+        </div>
+
+        <h2 class="card-title" style="text-align: center; margin: -30px 0 30px;">
+          <span style="color:  #5CBA60; font-weight: bold;">New Control</span> <span style="font-weight: bold; color:  #125C8E;"> Finance</span>
+        </h2>
+
+        <div class="card fat">
+          <div class="card-body">
+            <h4 class="card-title" style="text-align: center;">Login</h4>
+            <form class="my-login-validation" [formGroup]="formulario" novalidate="">
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="email">E-Mail:</label>
+                <input id="email" type="email" class="form-control" name="email" value="" required autofocus
+                formControlName="email">
+                
+                <div class="invalid-feedback"> Formato de email invalido!</div>
+              </div>
+
+              <div class="form-group">
+                <label for="password">Senha:
+                </label>
+                <input id="password" type="password" class="form-control" name="password" required data-eye
+                formControlName="password">
+                <div class="invalid-feedback">A senha é obrigatória!</div>
+
+              </div>
+
+              <div class="form-group">
+                <div class="custom-checkbox custom-control">
+                  <input type="checkbox" name="remember" id="remember" class="custom-control-input">
+                  <label for="remember" class="custom-control-label" style="padding-top: 5px;">Permanecer conectado</label>
+                </div>
+              </div>
+
+              <div class="form-group m-0">
+                <button type="submit" class="btn btn-primary btn-block"
+                [disabled]="!formulario.valid"
+                (click)="logar()">
+                <i class="fa fa-share" aria-hidden="true"></i> Entrar
+                </button>
+                
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="footer">
+          Copyright &copy; 2023 &mdash; NEW - Novo Estilo Web
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

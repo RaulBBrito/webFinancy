@@ -1,0 +1,27 @@
+<div class="header-home">
+  <div class="content-home">
+    <div class="color-white">
+        <app-menu></app-menu>
+    </div>
+    <div class="select-buttom">
+    <form [formGroup]="form">
+      <my-select [ctrl]="convertToFormControl(form.get('mes'))" [mesAtual]="mesAtual" [mesesAno]="mesesAno" placeholder="" (mesAnoSelecionado)="getMes($event)"></my-select>
+    </form>
+    
+    </div>
+    <div>
+      <app-add-despesa-renda></app-add-despesa-renda>
+    </div>
+  </div>
+  <div class="titulo-saldo color-white">Saldo atual em conta <br />
+    <span>R$ 2.431,50</span>
+  </div>
+</div>
+<div class="header-valores">
+  <div class="barra-lateral"><span class="titulo-valores">Rendas</span> <br /> <span class="valores cor-verde">R$ 2.678,00</span></div>
+  <div class="barra-lateral"><span class="titulo-valores">Despesas</span> <br /> <span class="valores cor-vermelho">R$ 1.026,92</span></div>
+  <div><span class="titulo-valores">Cartões</span> <br /> <span class="valores cor-vermelho">R$ 141,60</span></div>
+
+</div>
+<!--<p>You selected: {{ mesAnoSelecionado | json }}</p>-->
+<router-outlet></router-outlet>

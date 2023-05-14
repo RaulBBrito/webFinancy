@@ -1,0 +1,28 @@
+<ngx-tabs style="width: 100%; margin-top: 20px;">
+  <ngx-tab tabTitle="Rendas"  style="padding-bottom: 10px; width: 100%;"><app-rendas ></app-rendas>
+    <div>
+      <resumo-valores [dados]="resumoRendas"></resumo-valores>
+    </div>
+  </ngx-tab>
+  <ngx-tab tabTitle="Despesas"  style="padding-bottom: 10px;"><app-despesas  ></app-despesas>
+    <div>
+      <resumo-valores [dados]="resumoDespesas"></resumo-valores>
+    </div>
+  </ngx-tab>
+</ngx-tabs>
+
+
+
+
+<!--
+<div *ngIf="usuarioSessao" style="margin-top: 20px;">
+  <div *ngIf="usuarioSessao.perfil==='ADMIN'"> USUARIO: {{usuarioSessao.nome}} - Perfil: ADMIN</div>
+  <div *ngIf="usuarioSessao.perfil==='GERENTE'"> USUARIO GERENTE</div>
+  <div *ngIf="usuarioSessao.perfil==='FUNC'"> USUARIO FUNC</div>
+</div> -->
+
+
+
+
+
+
