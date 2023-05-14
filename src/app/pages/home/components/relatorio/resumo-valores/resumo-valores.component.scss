@@ -1,0 +1,30 @@
+.footer-home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  width: 100%;
+  /*position: absolute;
+	bottom: 0;*/
+  padding: 5px 0;
+  color: white;
+  margin-top: 0px;
+}
+
+.content-footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 3px;
+
+  background: #125C8E;
+  border-radius: 6px;
+
+  font-weight: 400;
+  font-size: 12px;
+
+  overflow-y: hidden;
+}

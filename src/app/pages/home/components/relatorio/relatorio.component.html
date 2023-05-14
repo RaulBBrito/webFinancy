@@ -1,35 +1,12 @@
 <ngx-tabs style="width: 100%; margin-top: 20px;">
   <ngx-tab tabTitle="Rendas"  style="padding-bottom: 10px; width: 100%;"><app-rendas ></app-rendas>
     <div>
-      <div class="footer-home" >
-        <div class="content-footer">
-          <span>Rendas recebidas</span>
-          <span>R$ 748,00</span>
-        </div>
-        <div class="content-footer">
-          <span>Aguardando recebimento</span>
-          <span>R$ 1930,00</span></div>
-        <div class="content-footer">
-          <span>Valor total da renda</span>
-          <span>R$ 2.678,00</span></div>
-      </div>
+      <resumo-valores [dados]="resumoRendas"></resumo-valores>
     </div>
   </ngx-tab>
-  
   <ngx-tab tabTitle="Despesas"  style="padding-bottom: 10px;"><app-despesas  ></app-despesas>
     <div>
-      <div class="footer-home" >
-        <div class="content-footer">
-          <span>Pagamento efetuado</span>
-          <span>R$ 748,00</span>
-        </div>
-        <div class="content-footer">
-          <span>Aguardando pagamento</span>
-          <span>R$ 1930,00</span></div>
-        <div class="content-footer">
-          <span>Valor total das despesas</span>
-          <span>R$ 2.678,00</span></div>
-      </div>
+      <resumo-valores [dados]="resumoDespesas"></resumo-valores>
     </div>
   </ngx-tab>
 </ngx-tabs>
