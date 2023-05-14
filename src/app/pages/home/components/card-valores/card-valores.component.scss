@@ -2,19 +2,21 @@
   background: #FFFFFF;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  padding: 10px 2px;
+  padding: 15px 2px;
   margin-bottom: 6px;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   font-size: 14px;
-  /*justify-content: space-between;*/
 }
-
+.card-container-despesas{
+  background: linear-gradient(90deg, #125C8E 0.76%, #0A4065 102.27%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 .font-data{
   font-size: 24px;
-  line-height: 17px;
+  line-height: 14px;
   width: 13%;
   border-right: 1px solid #8F8F8F;
   text-align: center;
@@ -22,19 +24,16 @@
 .font-data span{
   font-size: 12px;
 }
-
 .font-descricao{
   padding-left: 10px;
   width: 66%;
 }
-.font-valor{
-
+.color-white{
+  color: white;
 }
-
 .color-green{
   color: #5CBA60;
 }
-
 .color-red{
   color: #FF5757;
 }

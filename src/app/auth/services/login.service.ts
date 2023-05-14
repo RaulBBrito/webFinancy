@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Usuario, Login, ErrorApiModel } from '@app/core';
 import { ApiConfiguration } from '@app/core/services/api/api-configuration';
 import { BaseService } from '@app/core/services/base.service';
@@ -36,7 +37,8 @@ export class LoginService extends BaseService {
     public snackBar: MatSnackBar,
     private erros: ErrosService,
     private spinner: SpinnerService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private router: Router,
   ) {
     super(config);
   }
@@ -56,41 +58,23 @@ export class LoginService extends BaseService {
         return new Usuario(null, usuarioToken?.data?.nome, usuarioToken?.data?.email, '', "ADMIN");
       }
     }
-
     return null;
-
-    /*let usuarioToken = (token ? JSON.parse(localStorage[TOKEN]) : null);
-    //let usu = new Usuario(null, 'Raul Brito ', 'email@email', '', "ADMIN");
-    return usuarioToken;*/
-
   }
-
-  /*public setUsuarioLogado(usuario: Usuario){
-    localStorage[TOKEN] = JSON.stringify(usuario);
-  }*/
-  /*logout(){
-    delete localStorage[TOKEN]; 
-  }*/
 
   logout() {
     delete localStorage[TOKEN]; 
+    const spinner: Subscription = this.spinner.spinner$.subscribe();
+    this.loginRxService.onIsLoading.next(true);
+
+    setInterval(() => this.redirecionar(spinner), 2000);
   }
 
-  /*login_old(login: Login): Observable<Usuario | null>{
-    let usu = new Usuario(1, "Raul Brito", login.email, login.password, "FUNC");
-
-    if(login.email == login.password){
-      if(login.email == "admin"){
-        usu = new Usuario(1, "Raul ADMIN", login.email, login.password, "ADMIN");
-      }
-      else if(login.email == "gerente"){
-        usu = new Usuario(1, "Raul GERENTE", login.email, login.password, "GERENTE");
-      }
-      return of(usu);
-    }else{
-      return of(usu);
-    }
-  }*/
+  redirecionar(spinner: Subscription ){
+    this.ngZone.run(() => spinner.unsubscribe());
+    this.loginRxService.onIsLoading.next(false);
+    this.router.navigate(['/login']);
+    location.reload(); 
+  }
 
   cadastrar(usuario: Usuario): Observable<Usuario | null>{
     let usu = new Usuario(null, usuario.nome, usuario.email, usuario.senha, "ADMIN");
@@ -103,10 +87,9 @@ export class LoginService extends BaseService {
     return this.post<any, any>(`/login`, {username:login.email,password:login.password}, null, this.httpOption)
           .pipe(
             tap((token) => {
-              //let usu = new Usuario(null, 'Raul Brito ', 'email@email', '', "ADMIN");
               localStorage[TOKEN] = JSON.parse(JSON.stringify(token.token));
-            this.loginRxService.onIsLoading.next(false);
-            this.ngZone.run(() => spinnerSubscription.unsubscribe());
+              this.loginRxService.onIsLoading.next(false);
+              this.ngZone.run(() => spinnerSubscription.unsubscribe());
           }),
             catchError((error) => {
               this.errorHandle(error);

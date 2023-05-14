@@ -12,6 +12,7 @@ import { DespesasComponent } from './components/despesas/despesas.component';
 import { RendasComponent } from './components/rendas/rendas.component';
 import { TabsModule } from '@app/shared/components/tabs';
 import { CardValoresComponent } from './components/card-valores/card-valores.component';
+import { ResumoValoresComponent } from './components/relatorio/resumo-valores/resumo-valores.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CardValoresComponent } from './components/card-valores/card-valores.com
     RelatorioComponent,
     DespesasComponent,
     RendasComponent,
-    CardValoresComponent
+    CardValoresComponent,
+    ResumoValoresComponent
   ],
   imports: [
     CommonModule,
