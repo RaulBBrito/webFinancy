@@ -22,7 +22,7 @@ import TabComponent from "./tab.component";
       .tabs-container {
         min-height: 179px;
         max-height: 332px;
-        margin:10px 20px;
+        margin:10px 5px;
       }
       .tabs-container .tab{
         border-radius:5px 5px 0 0;
@@ -32,6 +32,8 @@ import TabComponent from "./tab.component";
         background: rgba(18, 92, 142, 0.75);
         cursor: pointer;
         color: white;
+
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.40);
 
       }
       .tabs-container .tab:hover{

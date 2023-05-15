@@ -1,11 +1,13 @@
-<ngx-tabs style="width: 100%; margin-top: 20px;">
-  <ngx-tab tabTitle="Despesas"  style="padding-bottom: 10px;"><app-despesas [despesas]="despesas"></app-despesas>
-    <div>
+<ngx-tabs>
+  <ngx-tab tabTitle="Despesas">
+    <div class="container-tabs" >
+      <div class="body-tabs"><app-despesas [despesas]="despesas"></app-despesas></div>
       <resumo-valores [dados]="resumoDespesas"></resumo-valores>
     </div>
   </ngx-tab>
-  <ngx-tab tabTitle="Rendas"  style="padding-bottom: 10px; width: 100%;"><app-rendas [rendas]="rendas"></app-rendas>
-    <div>
+  <ngx-tab tabTitle="Rendas">
+    <div class="container-tabs" >
+      <div class="body-tabs"><app-rendas [rendas]="rendas"></app-rendas></div>
       <resumo-valores [dados]="resumoRendas"></resumo-valores>
     </div>
   </ngx-tab>
