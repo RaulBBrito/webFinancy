@@ -6,7 +6,7 @@
   width: 100%;
   /*position: absolute;
 	bottom: 0;*/
-  padding: 5px 0;
+  padding-top: 5px;
   color: white;
   margin-top: 0px;
 }
@@ -29,10 +29,19 @@
   overflow-y: hidden;
 }
 
-.scroll{
+/*.scroll{
   height: 38vh;
   overflow: hidden;
   overflow-y: auto;
   border: solid 0,25px grey;
+}*/
+
+.container-tabs{
+  background: #FFFFFF;
+  border: solid 1px #f0f0f0;
+}
+
+.body-tabs{
+  padding: 10px 10px 5px;
 }
 

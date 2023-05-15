@@ -13,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { AddDespesaRendaComponent } from './components/add-despesa-renda/add-despesa-renda.component';
 import { InputComponent } from '../components/input/input.component';
+import { TabsModule } from '../components/tabs';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -29,7 +30,8 @@ import { InputComponent } from '../components/input/input.component';
     MatSelectModule,
     MatFormFieldModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    TabsModule
     //SharedModule
   ],
   exports: [

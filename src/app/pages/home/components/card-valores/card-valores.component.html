@@ -1,17 +1,3 @@
-<div *ngIf="!isTipoCartao" class="card-container {{tipoCard ? 'card-container-despesas': ''}}">
-  <div class="{{tipoCard ? 'color-white': ''}} font-data">
-    <div>{{card.dia}}</div>
-    <span>{{card.mes}}</span>
-  </div>
-  <div class="font-descricao">
-      <div class="{{tipoCard ? 'color-white': ''}}">{{card.descricao}}</div>
-      <div class="{{card.statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">{{card.descricaoStatus}}</div>
-  </div>
-  <div class="font-valor {{tipoCard ? 'color-red': 'color-green'}}">
-    <span>{{card.valor}}</span>
-  </div>
-</div>
-
 <div *ngIf="isTipoCartao" class="card-container-cartao">
   <div *ngFor="let tipoCartao of cardTipoCartao.tiposCartao" class="card-container-cartao-body">
     <div class="font-data heigth-cartao">
@@ -25,5 +11,19 @@
     <div class="font-valor color-red">
       <span>{{tipoCartao.valor}}</span>
     </div>
+  </div>
+</div>
+
+<div *ngIf="!isTipoCartao" class="card-container {{tipoCard ? 'card-container-despesas': ''}}">
+  <div class="{{tipoCard ? 'color-white': ''}} font-data">
+    <div>{{card.dia}}</div>
+    <span>{{card.mes}}</span>
+  </div>
+  <div class="font-descricao">
+      <div class="{{tipoCard ? 'color-white': ''}}">{{card.descricao}}</div>
+      <div class="{{card.statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">{{card.descricaoStatus}}</div>
+  </div>
+  <div class="font-valor {{tipoCard ? 'color-red': 'color-green'}}">
+    <span>{{card.valor}}</span>
   </div>
 </div>
