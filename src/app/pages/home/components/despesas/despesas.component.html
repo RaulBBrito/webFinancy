@@ -1,5 +1,6 @@
 <div class="scroll">
-  <div *ngFor="let despesa of despesas">
+  <div *ngFor="let despesa of despesas.tiposComum">
     <card [card]="despesa"></card>
   </div>
+  <card [isTipoCartao]="true" [cardTipoCartao]="despesas"></card>
 </div>

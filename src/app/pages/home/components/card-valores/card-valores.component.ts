@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Card } from '@app/core/interfaces';
+import { Card, TiposComumCartao } from '@app/core/interfaces';
 
 @Component({
   selector: 'card',
@@ -8,7 +8,9 @@ import { Card } from '@app/core/interfaces';
 })
 export class CardValoresComponent implements OnInit {
 
-  @Input() card: Card = {};
+  @Input() card: TiposComumCartao = {};
+  @Input() cardTipoCartao: Card = {};
+  @Input() isTipoCartao: boolean = false;
   tipoCard: boolean = false;
   ngOnInit(): void {
     this.tipoCard = this.card.tipocard === 'D';
