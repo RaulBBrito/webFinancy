@@ -1,3 +1,4 @@
+import { TiposComumCartao } from './../../../../core/interfaces/home.interface';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/auth/services/login.service';
@@ -13,8 +14,8 @@ export class RelatorioComponent implements OnInit {
   usuarioSessao: any;
   resumoRendas: IResumo = {}
   resumoDespesas: IResumo = {}
-  rendas: Card[] = []
-  despesas: Card[] = []
+  rendas: Card;
+  despesas: Card;
 
   constructor(
     private router: Router,
@@ -42,13 +43,16 @@ export class RelatorioComponent implements OnInit {
         valorTotal: {descricao:'Valor total da renda', valor: 'R$ 2.678,00'},
       }
 
-      this.rendas = [
-        {dia: "15", mes:"Jun", tipocard:"R", descricao: "Salário quizenal",statusPagamento: true,descricaoStatus: "recebido em 15/Jun",valor: "+ R$ 748,00"},
-        {dia: "30", mes:"Jun", tipocard:"R", descricao: "Sálario mensal",statusPagamento: false,descricaoStatus: "aguardando recebimendo",valor: "+ R$ 650,00"},
-        {dia: "15", mes:"Jun", tipocard:"R", descricao: "Extra Montreal",statusPagamento: false,descricaoStatus: "aguardando recebimento",valor: "+ R$ 500,00"},
-        {dia: "30", mes:"Jun", tipocard:"R", descricao: "Primeira parcela 13° Sálario",statusPagamento: false,descricaoStatus: "aguardando recebimento",valor: "+ R$ 780,00"},
-        {dia: "30", mes:"Jun", tipocard:"R", descricao: "Primeira parcela 13° Sálario",statusPagamento: true,descricaoStatus: "pago em 30/Jun",valor: "+ R$ 195,35"},
-      ]
+      this.rendas = {
+        tiposComum: [
+          {dia: "15", mes:"Jun", tipocard:"R", descricao: "Salário quizenal",statusPagamento: true,descricaoStatus: "recebido em 15/Jun",valor: "+ R$ 748,00"},
+          {dia: "30", mes:"Jun", tipocard:"R", descricao: "Sálario mensal",statusPagamento: false,descricaoStatus: "aguardando recebimendo",valor: "+ R$ 650,00"},
+          {dia: "15", mes:"Jun", tipocard:"R", descricao: "Extra Montreal",statusPagamento: false,descricaoStatus: "aguardando recebimento",valor: "+ R$ 500,00"},
+          {dia: "30", mes:"Jun", tipocard:"R", descricao: "Primeira parcela 13° Sálario",statusPagamento: false,descricaoStatus: "aguardando recebimento",valor: "+ R$ 780,00"},
+          {dia: "30", mes:"Jun", tipocard:"R", descricao: "Primeira parcela 13° Sálario",statusPagamento: true,descricaoStatus: "pago em 30/Jun",valor: "+ R$ 195,35"},
+        ],
+        tiposCartao: []
+      }
 
       this.resumoDespesas = {
         efetuadoRecebido: {descricao:'Pagamento efetuado', valor: 'R$ 280,27'},
@@ -56,10 +60,17 @@ export class RelatorioComponent implements OnInit {
         valorTotal: {descricao:'Valor total das despesas', valor: 'R$ 1.026,92'},
       }
 
-      this.despesas = [
-        {dia: "08", mes:"Jun", tipocard:"D", descricao: "Aluguel",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 600,00"},
-        {dia: "10", mes:"Jun", tipocard:"D", descricao: "Condominio",statusPagamento: true,descricaoStatus: "pago em 02/jun",valor: "- R$ 200,00"},
-        {dia: "20", mes:"Jun", tipocard:"D", descricao: "Luz",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 85,23"},
-      ]
+      this.despesas = {
+        tiposComum: [
+          {dia: "08", mes:"Jun", tipocard:"D", descricao: "Aluguel",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 600,00"},
+          {dia: "10", mes:"Jun", tipocard:"D", descricao: "Condominio",statusPagamento: true,descricaoStatus: "pago em 02/jun",valor: "- R$ 200,00"},
+          {dia: "20", mes:"Jun", tipocard:"D", descricao: "Luz",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 85,23"},
+        ],
+        tiposCartao: [
+          {dia: "08", mes:"Jun", tipocard:"D", descricao: "Aluguel",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 600,00"},
+          {dia: "10", mes:"Jun", tipocard:"D", descricao: "Condominio",statusPagamento: true,descricaoStatus: "pago em 02/jun",valor: "- R$ 200,00"},
+          {dia: "20", mes:"Jun", tipocard:"D", descricao: "Luz",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 85,23"},
+        ],
+      }
     }
 }
