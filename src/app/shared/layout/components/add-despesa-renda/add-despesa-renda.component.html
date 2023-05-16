@@ -1,7 +1,7 @@
 <img src="../../assets/img/ico-add.png" class="adicionar-item" alt="adicionar" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
 
 <!-- Modal -->
-<div class="modal top fade " id="exampleModal" tabindex="-1" 
+<!--<div class="modal top fade " id="exampleModal" tabindex="-1" 
   aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
@@ -58,9 +58,11 @@
     </div>
   </div>
 </div> 
-<!--
-<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
 
+<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+-->
+
+<!--
 <div class="modal top fade " id="exampleModal" tabindex="-1" 
   aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -91,4 +93,148 @@
       </div>
     </div>
   </div>
-</div>-->
+</div> -->
+<div class="modal top fade " id="exampleModal" tabindex="-1" 
+  aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+    <button type="button" style="background-color: white; border-radius: 50%;
+      width: 26px; height: 26px; margin: 0 0 10px 0;
+    " class="btn-close" data-mdb-dismiss="modal" aria-label="Close">
+    </button>
+    <div class="modal-content">
+          <mat-tab-group mat-stretch-tabs #tabRef class="">
+            <mat-tab label="DESPESA">
+              <form [formGroup]="formDataDespesa" (ngSubmit)="onSubmit(formDataDespesa.value, 'D')">
+                <div class="modal-body">
+                  <app-input-customer
+                    label="Categoria tipo despesa"
+                    placeholder="Selecione a categoria"
+                    [type]="'select'"
+                    widthLabel="largura-label-142"
+                    [value]="tipoItemCategoria"
+                    [control]="$any(formDataDespesa.get('categoria'))"></app-input-customer>
+                  <app-input-customer *ngIf="formDataDespesa.value.categoria == 'Cartão'"
+                    label="Cartão"
+                    placeholder="Selecione a categoria"
+                    [type]="'select'"
+                    widthLabel="largura-label-50"
+                    [value]="listCartaoCategoria"
+                    [control]="$any(formDataDespesa.get('idCartao'))"></app-input-customer>
+                  <app-input-customer
+                    label="Descrição da despesa"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataDespesa.get('tituloDespesa'))"></app-input-customer>
+                  <app-input-customer
+                    label="Valor da despesa"
+                    placeholder="0,00"
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataDespesa.get('valorDespesa'))"></app-input-customer>
+                  <app-input-customer
+                    label="Data de vencimento"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataDespesa.get('dataVencDespesa'))"></app-input-customer>
+                  <app-input-customer
+                    label="Data de pagamento"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataDespesa.get('dataPagDespesa'))"></app-input-customer>
+                    
+                    <div class="status-pagamento form-control">
+                      <div>
+                        <label class="form-label" for="StatusPagamento">Status Pagamento:</label>
+                      </div>
+                      <div style="padding-left: 16px;">
+                        <input  class="input-radio" type="radio"
+                                name="inlineRadioOptions" id="inlineRadio1" 
+                                value="S" autocompleted="" [formControl]="$any(formDataDespesa.get('statusPagamento'))">
+                      </div>
+                      <div style="margin-top: -4px; padding-left: 2px;">
+                        <label class="form-check-label" for="inlineRadio1" >Pago</label>
+                      </div>
+                      <div style="padding-left: 16px;">
+                        <input  class="input-radio" type="radio" 
+                                name="inlineRadioOptions" id="inlineRadio2" 
+                                value="N" autocompleted="" [formControl]="$any(formDataDespesa.get('statusPagamento'))">
+                      </div>
+                      <div style="margin-top: -4px; padding-left: 2px;">
+                        <label class="form-check-label" for="inlineRadio2" >Não Pago</label>
+                      </div>
+                    </div>
+
+                  <app-input-customer
+                    label="Descrição"
+                    placeholder=""
+                    type="textarea"
+                    [required]="true"
+                    [control]="$any(formDataDespesa.get('descricaoDespesa'))"
+                    style="margin-bottom: 0px !important;"></app-input-customer>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Fechar
+                  </button>
+                  <button class="btn btn-primary" [disabled]="formDataDespesa.invalid" data-mdb-dismiss="modal">Cadastrar</button>
+                </div>
+              </form>
+            </mat-tab>
+
+            <mat-tab label="RENDA">
+              <form [formGroup]="formDataRenda" (ngSubmit)="onSubmit(formDataRenda.value, 'R')">
+                <div class="modal-body">
+                  <app-input-customer
+                    label="Titulo da renda"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataRenda.get('tituloRenda'))"></app-input-customer>
+                  <app-input-customer
+                    label="Valor da renda"
+                    placeholder="0,00"
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataRenda.get('valorRenda'))"></app-input-customer>
+                  <app-input-customer
+                    label="Categoria"
+                    placeholder="Selecione a categoria"
+                    [type]="'select'"
+                    [value]="tipoCategoria"
+                    [control]="$any(formDataRenda.get('categoria'))"></app-input-customer>
+                  <app-input-customer
+                    label="Data de vencimento"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataRenda.get('dataVencRenda'))"></app-input-customer>
+                  <app-input-customer
+                    label="Data de pagamento"
+                    placeholder=""
+                    type="text"
+                    [required]="true"
+                    [control]="$any(formDataRenda.get('dataPagRenda'))"></app-input-customer>
+                  <app-input-customer
+                    label="Descrição"
+                    placeholder=""
+                    type="textarea"
+                    [required]="true"
+                    [control]="$any(formDataRenda.get('descricaoRenda'))"></app-input-customer>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                    Fechar
+                  </button>
+                  <button class="btn btn-primary" [disabled]="formDataRenda.invalid" data-mdb-dismiss="modal">Cadastrar</button>
+                </div>
+              </form>
+
+            </mat-tab>
+          </mat-tab-group>
+    </div>
+  </div>
+</div>

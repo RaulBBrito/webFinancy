@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AddDespesaRendaComponent } from './components/add-despesa-renda/add-despesa-renda.component';
 import { InputComponent } from '../components/input/input.component';
 import { TabsModule } from '../components/tabs';
+import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -31,7 +32,8 @@ import { TabsModule } from '../components/tabs';
     MatFormFieldModule,
     MatMenuModule,
     MatIconModule,
-    TabsModule
+    TabsModule,
+    MatTabsModule
     //SharedModule
   ],
   exports: [

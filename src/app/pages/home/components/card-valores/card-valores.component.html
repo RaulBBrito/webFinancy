@@ -1,17 +1,18 @@
 <div *ngIf="isTipoCartao" class="card-container-cartao">
+  <div class="card-container-cartao-titulo">Valores em cartões</div>
   <div *ngFor="let tipoCartao of cardTipoCartao.tiposCartao" class="card-container-cartao-body">
-    <div class="font-data heigth-cartao">
-      <div>{{tipoCartao.dia}}</div>
-      <span>{{tipoCartao.mes}}</span>
+      <div class="font-data heigth-cartao">
+        <div>{{tipoCartao.dia}}</div>
+        <span>{{tipoCartao.mes}}</span>
+      </div>
+      <div class="font-descricao space-text">
+          <div >{{tipoCartao.descricao}}</div>
+          <div class="{{tipoCartao.statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">{{tipoCartao.descricaoStatus}}</div>
+      </div>
+      <div class="font-valor color-red">
+        <span>{{tipoCartao.valor}}</span>
+      </div>
     </div>
-    <div class="font-descricao space-text">
-        <div >{{tipoCartao.descricao}}</div>
-        <div class="{{tipoCartao.statusPagamento ? 'color-green': 'color-red'}} font-tipo-recebimento">{{tipoCartao.descricaoStatus}}</div>
-    </div>
-    <div class="font-valor color-red">
-      <span>{{tipoCartao.valor}}</span>
-    </div>
-  </div>
 </div>
 
 <div *ngIf="!isTipoCartao" class="card-container {{tipoCard ? 'card-container-despesas': ''}}">

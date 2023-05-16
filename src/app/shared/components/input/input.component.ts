@@ -15,6 +15,7 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
   @Input() readonly: boolean = false;
+  @Input() widthLabel: string = 'largura-label-142';
 
   @Output() selectedChangedEvent = new EventEmitter();
   @Output() filterInputValueEvent = new EventEmitter();
