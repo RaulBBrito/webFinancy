@@ -7,12 +7,21 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
   styleUrls: ['./add-despesa-renda.component.scss']
 })
 export class AddDespesaRendaComponent implements OnInit {
-  formData: FormGroup;  
+  formDataDespesa: FormGroup;  
+  formDataRenda: FormGroup;  
   veiculoForm: FormGroup;
 
   tipoCategoria = [
     'Despesa',
     'Renda',
+  ]
+  tipoItemCategoria = [
+    'Cartão',
+    'Avulso',
+  ]
+  listCartaoCategoria = [
+    'Itau',
+    'Santander',
   ]
   constructor(
     private fb: FormBuilder,
@@ -25,13 +34,24 @@ export class AddDespesaRendaComponent implements OnInit {
   }
 
   createForm() {
-    this.formData = new FormGroup({
+    this.formDataDespesa = new FormGroup({
       tituloDespesa:    new FormControl('', [Validators.required, Validators.minLength(5),]),
       valorDespesa:     new FormControl('', [Validators.required,]),
       categoria:        new FormControl('', [Validators.required]),
       dataVencDespesa:  new FormControl('', [Validators.required,]),
       dataPagDespesa:   new FormControl('', []),
       descricaoDespesa: new FormControl('', []),
+      idRecurso:        new FormControl('1', []),
+      idCartao:         new FormControl('', []),
+      statusPagamento:  new FormControl('S', []),
+    });
+    this.formDataRenda = new FormGroup({
+      tituloRenda:    new FormControl('', [Validators.required, Validators.minLength(5),]),
+      valorRenda:     new FormControl('', [Validators.required,]),
+      categoria:      new FormControl('', [Validators.required]),
+      dataVencRenda:  new FormControl('', [Validators.required,]),
+      dataPagRenda:   new FormControl('', []),
+      descricaoRenda: new FormControl('', []),
     });
   }
 
@@ -40,8 +60,15 @@ export class AddDespesaRendaComponent implements OnInit {
     return ctrl;
   }
 
-  onSubmit(form: any) {
+  onSubmit(form: any, tipoCadastro: string) {
     console.log(form);
+
+    if(tipoCadastro === 'D'){
+      console.log("Cadastrar Dispesas");
+    }else{
+      console.log("Cadastrar Rendas");
+    }
+
     this.createForm();
   }
 }

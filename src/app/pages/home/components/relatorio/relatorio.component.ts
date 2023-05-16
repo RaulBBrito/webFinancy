@@ -67,9 +67,9 @@ export class RelatorioComponent implements OnInit {
           {dia: "20", mes:"Jun", tipocard:"D", descricao: "Luz",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 85,23"},
         ],
         tiposCartao: [
-          {dia: "08", mes:"Jun", tipocard:"D", descricao: "Aluguel",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 600,00"},
-          {dia: "10", mes:"Jun", tipocard:"D", descricao: "Condominio",statusPagamento: true,descricaoStatus: "pago em 02/jun",valor: "- R$ 200,00"},
-          {dia: "20", mes:"Jun", tipocard:"D", descricao: "Luz",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 85,23"},
+          {dia: "08", mes:"Jun", tipocard:"D", descricao: "Cartão Itaú - 6328",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 20.225,23"},
+          {dia: "10", mes:"Jun", tipocard:"D", descricao: "Cartão Itaú - 8536",statusPagamento: true,descricaoStatus: "pago em 02/jun",valor: "- R$ 80,27"},
+          {dia: "20", mes:"Jun", tipocard:"D", descricao: "Cartão Santander - 4828",statusPagamento: false,descricaoStatus: "aguardando pagamento",valor: "- R$ 36,19"},
         ],
       }
     }

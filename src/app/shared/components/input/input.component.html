@@ -34,7 +34,8 @@
       (keyup)="filterInputValue()">
 </mat-form-field>-->
 
-<div class="form-outline mb-4" *ngIf="type=='text'">
+<div class="form-outline space-inputs" *ngIf="type=='text'">
+  <i class="fas fa-exclamation-circle trailing"></i>
   <input
       matInput
       id={{label}}
@@ -50,8 +51,8 @@
     <div class="form-notch-trailing"></div>
   </div>
 </div>
-<div class="form-outline mb-4" *ngIf="type=='select'">
-  
+
+<div class="form-outline space-inputs" *ngIf="type=='select'">
   <select matSelect class="form-control select select-initialized" id={{label}} name={{label}} 
   [formControl]="control">
     <option [value]="''">Selecione a categoria</option>
@@ -59,8 +60,34 @@
   </select>
   <label class="form-label select-label active" style="
   transform: translateY(-1rem) translateY(0.1rem) scale(.8); z-index: 1; 
-  background: #FFF;" for={{label}}>&nbsp;{{label}}&nbsp;</label>
+  " for={{label}}>&nbsp;{{label}}&nbsp;</label>
   <!--<label class="form-label select-label active" for={{label}}>{{label}}&nbsp;</label>-->
+  <div class="form-notch">
+    <div class="form-notch-leading" style="width: 9px;"></div>
+    <div class="form-notch-middle categoria-label {{widthLabel}}"></div> <!--142px-->
+    <div class="form-notch-trailing"></div>
+  </div>
+</div>
+
+<div class="form-outline" *ngIf="type=='textarea'">
+  <textarea 
+      [formControl]="control"
+      placeholder="Adicione uma descrição"
+      class="form-control" 
+      id="{{label}}" 
+      rows="3"
+  ></textarea>
+  <label class="form-label" for={{label}}>{{label}}&nbsp;</label>
+  <!--<textarea
+      appTextareaAutosize
+      rows="4"
+      [minRows]="4"
+      [maxRows]="5"
+      [formControl]="control"
+      placeholder="Epaço para descrição"
+      
+      id={{label}} name={{label}} 
+  ></textarea> < !--class="text-input"-->
   <div class="form-notch">
     <div class="form-notch-leading" style="width: 9px;"></div>
     <div class="form-notch-middle" style="width: 60px;"></div>
