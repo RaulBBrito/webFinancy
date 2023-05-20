@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { IMensal } from '@app/core/interfaces/itipo-item-mes.interface';
 
 interface Mes {
   mes: string;
@@ -13,7 +14,7 @@ interface Mes {
   <mat-form-field appearance="outline">
     <mat-select [placeholder]="placeholder" [(value)]="mesAtual">
       <mat-option [value]="option" *ngFor="let option of mesesAno" (click)="getSelecionado(option)">
-        {{ option.descricao_mes }} / {{ option.ano }}
+        {{option.data_mes_ano_mensal | date: 'MMMM / y'}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -32,13 +33,13 @@ interface Mes {
 })
 export class SelectComponent  {
   @Input() ctrl: FormControl;
-  @Input() mesesAno: Mes[];
+  @Input() mesesAno: IMensal[];
   @Input() placeholder: string;
-  @Input() mesAtual: Mes;
+  @Input() mesAtual: IMensal;
 
-  @Output() mesAnoSelecionado = new EventEmitter<Mes>();
+  @Output() mesAnoSelecionado = new EventEmitter<IMensal>();
 
-  getSelecionado(mes: Mes){
+  getSelecionado(mes: IMensal){
     this.mesAnoSelecionado.emit(mes);
   }
 }

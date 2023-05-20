@@ -1,0 +1,38 @@
+::ng-deep.cdk-overlay-pane{
+  max-width: none !important;
+}
+
+::ng-deep.mat-tab-body-content{
+  overflow: hidden !important;
+}
+
+::ng-deep.mat-dialog-container{
+  padding: 15px;
+}
+
+.adicionar-item{
+  width: 38px;
+}
+
+.input-radio{
+  width: 22px;
+  height: 20px;
+  margin-bottom: -5px;
+}
+
+.status-pagamento{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding-top: 10px;
+  margin-bottom: 12px;
+}
+
+.modal-body{
+  margin-top: 15px;
+  padding: 0 10px;
+}
+.modal-footer{
+  padding: 10px;
+}

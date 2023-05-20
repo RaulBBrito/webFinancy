@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ISelectChaveValor, ITipoItemMes } from '@app/core/interfaces/itipo-item-mes.interface';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class InputComponent implements OnInit {
   @Input() control: FormControl;
   @Input() label: string = '';
-  @Input() value: string[];
+  @Input() value: ISelectChaveValor[];
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
   @Input() required: boolean = false;

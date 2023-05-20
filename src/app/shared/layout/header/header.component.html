@@ -10,17 +10,20 @@
     
     </div>
     <div>
-      <app-add-despesa-renda></app-add-despesa-renda>
+      <!--<app-add-despesa-renda></app-add-despesa-renda>-->
+      <div class="btn-add" (click)="cadastrarDespesaRenda()">
+        <img src="../../assets/img/ico-add.png" class="adicionar-item" alt="adicionar">
+      </div>
     </div>
   </div>
   <div class="titulo-saldo color-white">Saldo atual em conta <br />
-    <span>R$ 2.431,50</span>
+    <span>{{mesAnoSelecionado.vlr_saldo_conta_mensal | currency : 'BRL'}}</span>
   </div>
 </div>
 <div class="header-valores">
-  <div class="barra-lateral"><span class="titulo-valores">Rendas</span> <br /> <span class="valores cor-verde">{{valores.renda}}</span></div>
-  <div class="barra-lateral"><span class="titulo-valores">Despesas</span> <br /> <span class="valores cor-vermelho">{{valores.despesa}}</span></div>
-  <div><span class="titulo-valores">Cartões</span> <br /> <span class="valores cor-vermelho">{{valores.cartao}}</span></div>
+  <div class="barra-lateral"><span class="titulo-valores">Rendas</span> <br /> <span class="valores cor-verde">{{valores.renda | currency : 'BRL'}}</span></div>
+  <div class="barra-lateral"><span class="titulo-valores">Despesas</span> <br /> <span class="valores cor-vermelho">{{valores.despesa | currency : 'BRL'}}</span></div>
+  <div><span class="titulo-valores">Cartões</span> <br /> <span class="valores cor-vermelho">{{valores.cartao | currency : 'BRL'}}</span></div>
 
 </div>
 <!--<p>You selected: {{ mesAnoSelecionado | json }}</p>-->

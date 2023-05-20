@@ -1,5 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { TipoItemMesService } from '@app/core/services';
+import { DialogComponent } from '@app/shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-add-despesa-renda',
@@ -7,7 +10,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
   styleUrls: ['./add-despesa-renda.component.scss']
 })
 export class AddDespesaRendaComponent implements OnInit {
-  formDataDespesa: FormGroup;  
+  /*formDataDespesa: FormGroup;  
   formDataRenda: FormGroup;  
   veiculoForm: FormGroup;
 
@@ -20,11 +23,14 @@ export class AddDespesaRendaComponent implements OnInit {
     'Avulso',
   ]
   listCartaoCategoria = [
-    'Itau',
-    'Santander',
+    'Cartão Itau - 6328',
+    'Cartão Itau - 8536',
+    'Santander - 4828',
   ]
   constructor(
     private fb: FormBuilder,
+    private tipoItemMesService: TipoItemMesService,
+    private dialog: MatDialog
   ){
     this.createForm();
   }
@@ -70,5 +76,24 @@ export class AddDespesaRendaComponent implements OnInit {
     }
 
     this.createForm();
+  }*/
+
+  constructor(
+    private dialog: MatDialog){
+  }
+
+  ngOnInit() {
+  }
+
+  cadastrarDespesaRenda(){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '90%',
+      height: '',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
   }
 }
