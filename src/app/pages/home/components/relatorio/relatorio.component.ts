@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/auth/services/login.service';
 import { IResumo, Card } from '@app/core/interfaces';
+import { TipoItemMesService } from '@app/core/services';
 
 @Component({
   selector: 'app-relatorio',

@@ -54,9 +54,9 @@
 
 <div class="form-outline space-inputs" *ngIf="type=='select'">
   <select matSelect class="form-control select select-initialized" id={{label}} name={{label}} 
-  [formControl]="control">
+  [formControl]="control" (ngModelChange)="selectedChanged()">
     <option [value]="''">Selecione a categoria</option>
-    <option *ngFor="let item of value" [value]="item">{{item}}</option>
+    <option *ngFor="let item of value" [value]="item.chave">{{item.valor}}</option>
   </select>
   <label class="form-label select-label active" style="
   transform: translateY(-1rem) translateY(0.1rem) scale(.8); z-index: 1; 

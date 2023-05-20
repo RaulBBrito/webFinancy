@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@popperjs/core": "^2.11.7",
     "angular-jwt": "^0.1.11",
+    "bn-ng-idle": "^2.0.5",
     "bootstrap": "^5.2.3",
     "ngx-print": "^1.2.1",
     "ngx-spinner": "^15.0.0",

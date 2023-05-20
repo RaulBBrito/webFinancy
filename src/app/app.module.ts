@@ -14,6 +14,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { LocatorService } from './core/services';
 import Configs from './envconfig/Configs';
 import { LoginComponent } from './login/login.component';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { LoginComponent } from './login/login.component';
   providers: [
     { provide: APP_BASE_HREF, useValue: '' },
     { provide: MAT_DATE_LOCALE, useValue: 'pt-br' },
+    BnNgIdleService
   ],
   bootstrap: [AppComponent]
 })

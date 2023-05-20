@@ -12,7 +12,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { AddDespesaRendaComponent } from './components/add-despesa-renda/add-despesa-renda.component';
-import { InputComponent } from '../components/input/input.component';
 import { TabsModule } from '../components/tabs';
 import {MatTabsModule} from '@angular/material/tabs';
 @NgModule({
@@ -21,8 +20,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     FooterComponent,
     SelectComponent,
     MenuComponent,
-    AddDespesaRendaComponent,
-    InputComponent
+    AddDespesaRendaComponent
   ],
   imports: [
     CommonModule,

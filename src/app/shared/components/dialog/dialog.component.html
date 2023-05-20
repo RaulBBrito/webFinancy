@@ -1,115 +1,12 @@
-<img src="../../assets/img/ico-add.png" class="adicionar-item" alt="adicionar" (click)="cadastrarDespesaRenda()"><!--data-mdb-toggle="modal" data-mdb-target="#exampleModal"> -->
 
+  <div class="content-dialog-cadastro">
 
-<!-- Modal -->
-<!--<div class="modal top fade " id="exampleModal" tabindex="-1" 
-  aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">CADASTRAR DESPESA</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)">
-      <div class="modal-body">
-            <app-input-customer
-              label="Titulo da despesa"
-              placeholder=""
-              type="text"
-              [required]="true"
-              [control]="$any(formData.get('tituloDespesa'))"></app-input-customer>
-            <app-input-customer
-              label="Valor da despesa"
-              placeholder="0,00"
-              type="text"
-              [required]="true"
-              [control]="$any(formData.get('valorDespesa'))"></app-input-customer>
-            <app-input-customer
-              label="Categoria"
-              placeholder="Selecione a categoria"
-              [type]="'select'"
-              [value]="tipoCategoria"
-              [control]="$any(formData.get('categoria'))"></app-input-customer>
-            <app-input-customer
-              label="Data de vencimento"
-              placeholder=""
-              type="text"
-              [required]="true"
-              [control]="$any(formData.get('dataVencDespesa'))"></app-input-customer>
-            <app-input-customer
-              label="Data de pagamento"
-              placeholder=""
-              type="text"
-              [required]="true"
-              [control]="$any(formData.get('dataPagDespesa'))"></app-input-customer>
-            <app-input-customer
-              label="Descrição"
-              placeholder=""
-              type="text"
-              [required]="true"
-              [control]="$any(formData.get('descricaoDespesa'))"></app-input-customer>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-          Close
-        </button>
-        <button class="btn btn-primary" [disabled]="formData.invalid" data-mdb-dismiss="modal">Salvar</button>
-      </div>
-    </form>
-    </div>
-  </div>
-</div> 
-
-<button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
--->
-
-<!--
-<div class="modal top fade " id="exampleModal" tabindex="-1" 
-  aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-body">
-
-              <ngx-tabs>
-                <ngx-tab tabTitle="Despesa">
-                  <div class="container-tabs" >
-                    Despesa
-                    
-                  </div>
-                </ngx-tab>
-                <ngx-tab tabTitle="Renda">
-                  <div class="container-tabs" >
-                    Renda
-                  </div>
-                </ngx-tab>
-              </ngx-tabs>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-          Close
-        </button>
-        <button class="btn btn-primary" [disabled]="formData.invalid" data-mdb-dismiss="modal">Salvar</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-<!--
-<div class="modal top fade " id="exampleModal" tabindex="-1" 
-  aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-
-    <button type="button" style="background-color: white; border-radius: 50%;
+    <!--<button type="button" style="background-color: white; border-radius: 50%;
       width: 26px; height: 26px; margin: 0 0 10px 0;
     " class="btn-close" data-mdb-dismiss="modal" aria-label="Close">
-    </button>
+    </button>-->
     <div class="modal-content">
-          <mat-tab-group mat-stretch-tabs #tabRef class="">
+          <mat-tab-group mat-stretch-tabs #tabRef class="" >
             <mat-tab label="DESPESA">
               <form [formGroup]="formDataDespesa" (ngSubmit)="onSubmit(formDataDespesa.value, 'D')">
                 <div class="modal-body">
@@ -119,8 +16,9 @@
                     [type]="'select'"
                     widthLabel="largura-label-142"
                     [value]="tipoItemCategoria"
-                    [control]="$any(formDataDespesa.get('categoria'))"></app-input-customer>
-                  <app-input-customer *ngIf="formDataDespesa.value.categoria == 'Cartão'"
+                    [control]="$any(formDataDespesa.get('categoria'))"
+                    (selectedChangedEvent)="buscarCartao(formDataDespesa.value.categoria)"></app-input-customer>
+                  <app-input-customer *ngIf="isSelectCartao"
                     label="Cartão"
                     placeholder="Selecione a categoria"
                     [type]="'select'"
@@ -183,10 +81,10 @@
                     style="margin-bottom: 0px !important;"></app-input-customer>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                  <button type="button" class="btn btn-secondary" (click)="fechar()">
                     Fechar
                   </button>
-                  <button class="btn btn-primary" [disabled]="formDataDespesa.invalid" data-mdb-dismiss="modal">Cadastrar</button>
+                  <button class="btn btn-primary" [disabled]="formDataDespesa.invalid">Cadastrar</button>
                 </div>
               </form>
             </mat-tab>
@@ -232,10 +130,10 @@
                     [control]="$any(formDataRenda.get('descricaoRenda'))"></app-input-customer>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                  <button type="button" class="btn btn-secondary" (click)="fechar()">
                     Fechar
                   </button>
-                  <button class="btn btn-primary" [disabled]="formDataRenda.invalid" data-mdb-dismiss="modal">Cadastrar</button>
+                  <button class="btn btn-primary" [disabled]="formDataRenda.invalid">Cadastrar</button>
                 </div>
               </form>
 
@@ -243,4 +141,3 @@
           </mat-tab-group>
     </div>
   </div>
-</div> -->

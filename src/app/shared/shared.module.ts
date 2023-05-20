@@ -5,11 +5,15 @@ import { MaterialModule } from './modules';
 import { LayoutModule } from './layout';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
-    
-    LoadingComponent
+    LoadingComponent,
+    DialogComponent,
+    InputComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     MaterialModule,
     LayoutModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTabsModule
   ],
   exports: [
     FormsModule,

@@ -9,6 +9,7 @@ import { ErrosService } from '@app/core/services/erros.service';
 import { LoginRxService } from '@app/core/services/rx/loginRxService';
 import { SpinnerService } from '@app/core/services/spinner.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BnNgIdleService } from 'bn-ng-idle';
 import { EMPTY, Observable, of, throwError, Subscription } from 'rxjs';
 import { catchError, tap} from 'rxjs/operators';
 
@@ -39,6 +40,7 @@ export class LoginService extends BaseService {
     private spinner: SpinnerService,
     private ngZone: NgZone,
     private router: Router,
+    //private idleService: BnNgIdleService
   ) {
     super(config);
   }
@@ -65,7 +67,7 @@ export class LoginService extends BaseService {
     delete localStorage[TOKEN]; 
     const spinner: Subscription = this.spinner.spinner$.subscribe();
     this.loginRxService.onIsLoading.next(true);
-
+    //this.idleService.resetTimer();
     setInterval(() => this.redirecionar(spinner), 2000);
   }
 

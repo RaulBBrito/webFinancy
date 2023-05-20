@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
-export interface Mes {
-  mes: string;
-  descricao_mes: string;
-  ano: string;
-}
+import { MatDialog } from '@angular/material/dialog';
+import { Mes } from '@app/core/interfaces';
+import { IMensal } from '@app/core/interfaces/itipo-item-mes.interface';
+import { TipoItemMesService } from '@app/core/services';
+import { DialogComponent } from '@app/shared/components/dialog/dialog.component';
 
 export interface ValoresHeader {
   renda: string;
@@ -21,25 +20,27 @@ export interface ValoresHeader {
 export class HeaderComponent implements OnInit {
 
   form: FormGroup;
-  mesAnoSelecionado: Mes;
-  mesesAno: Mes[] = [];
-  mesAtual: Mes;
+  mesAnoSelecionado: IMensal = {
+    vlr_saldo_conta_mensal: "0"
+  };
+  mesesAno: IMensal[] = [];
+  mesAtual: IMensal;
 
   valores:ValoresHeader = {
-    renda: 'R$ 2678,00',
-    despesa: 'R$ 1.026,92',
-    cartao: 'R$ 141,60'
-  } 
+    renda: "",
+    despesa: "",
+    cartao: ""
+  };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private dialog: MatDialog,
+    private tipoItemMesService: TipoItemMesService) {
     this.form = this.fb.group({
       mes: ['', Validators.required],
     })}
 
   ngOnInit(): void {
-    this.popularPeriodo();
-    this.mesAtual = this.mesesAno[3];
-    this.mesAnoSelecionado = this.mesesAno[3];
+    this.getListaMensal();
   }
 
   convertToFormControl(absCtrl: AbstractControl | null): FormControl {
@@ -49,17 +50,42 @@ export class HeaderComponent implements OnInit {
 
   getMes(item: any){
     this.mesAnoSelecionado = item;
-    console.table(item);
+    this.valores = {
+      renda: this.mesAnoSelecionado?.vlrt_renda_mensal+"",
+      despesa: this.mesAnoSelecionado?.vlrt_despesa_mensal+"",
+      cartao: this.mesAnoSelecionado?.vlrt_cartao_mensal+""
+    }
   }
 
-  popularPeriodo(){
-    this.mesesAno = [
-      {mes: '0', descricao_mes: 'Janeiro', ano: '2023'},
-      {mes: '1', descricao_mes: 'Fevereiro', ano: '2023'},
-      {mes: '2', descricao_mes: 'Março', ano: '2023'},
-      {mes: '3', descricao_mes: 'Abril', ano: '2023'},
-      {mes: '4', descricao_mes: 'Maio', ano: '2023'},
-    ];
+  getListaMensal(){
+    this.tipoItemMesService.getListMensal()
+      .subscribe((mensal) => {
+        
+        this.mesesAno = mensal
+        this.mesAtual = this.mesesAno[1];
+        this.mesAnoSelecionado = this.mesesAno[1];
+
+        this.valores = {
+          renda:    this.mesAnoSelecionado?.vlrt_renda_mensal+"",
+          despesa:  this.mesAnoSelecionado?.vlrt_despesa_mensal+"",
+          cartao:   this.mesAnoSelecionado?.vlrt_cartao_mensal+""
+        }
+        
+      });
+  }
+
+  cadastrarDespesaRenda(){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '90%',
+      height: '',
+      data: {mes:       this.mesAnoSelecionado.id_mensal, 
+        descricao_mes:  this.mesAnoSelecionado.data_mes_ano_mensal, 
+        ano:            this.mesAnoSelecionado.data_mes_ano_mensal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
   }
 
 }
