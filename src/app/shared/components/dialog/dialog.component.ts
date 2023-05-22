@@ -2,8 +2,9 @@ import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Mes } from '@app/core/interfaces';
-import { ISelectChaveValor, ITipoItemMes } from '@app/core/interfaces/itipo-item-mes.interface';
+import { ISelectChaveValor } from '@app/core/interfaces/itipo-item-mes.interface';
 import { TipoItemMesService } from '@app/core/services';
+import { CartaoService } from '@app/core/services/cartao.service';
 
 @Component({
   selector: 'app-dialog',
@@ -27,6 +28,7 @@ export class DialogComponent {
   constructor(
     private fb: FormBuilder,
     private tipoItemMesService: TipoItemMesService,
+    private cartaoService: CartaoService,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Mes,
     private dialogRef: MatDialogRef<DialogComponent>
@@ -103,7 +105,7 @@ export class DialogComponent {
     if(cartaoSelecionado == 1){
       this.isSelectCartao = true;
 
-      this.tipoItemMesService.getListCartao()
+      this.cartaoService.getListCartao()
       .subscribe((tipoDespesa) => {
         tipoDespesa.forEach(item =>{
           this.listCartaoCategoria.push({chave: item.id_cartao, valor: item.desc_cartao+" - "+item.num_final_cartao})

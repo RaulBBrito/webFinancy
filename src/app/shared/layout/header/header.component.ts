@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Mes } from '@app/core/interfaces';
 import { IMensal } from '@app/core/interfaces/itipo-item-mes.interface';
 import { TipoItemMesService } from '@app/core/services';
 import { DialogComponent } from '@app/shared/components/dialog/dialog.component';
