@@ -1,6 +1,11 @@
 <div class="scroll">
-  <card [isTipoCartao]="true" [cardTipoCartao]="despesas"></card>
-  <div *ngFor="let despesa of despesas.tiposComum">
-    <card [card]="despesa"></card>
+  <div *ngIf="(despesas.tiposCartao.length > 0 || despesas.tiposComum.length > 0) ; else elseBlock ">
+    <card [isTipoCartao]="true" [cardTipoCartao]="despesas"></card>
+    <div *ngFor="let despesa of despesas.tiposComum">
+      <card [card]="despesa"></card>
+    </div>
   </div>
+  <ng-template #elseBlock >
+    <div  class="sem-lancamento" >Sem lançamento no período selecionado.</div>  
+  </ng-template>
 </div>

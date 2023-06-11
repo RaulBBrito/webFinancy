@@ -8,6 +8,7 @@ import { Card } from '@app/core/interfaces';
 export class DespesasComponent {
 
   @Input() despesas: Card = {
-    tiposCartao: []
+    tiposCartao: [],
+    tiposComum: []
   };
 }

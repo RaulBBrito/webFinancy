@@ -2,4 +2,5 @@
   <div *ngFor="let renda of rendas.tiposComum">
     <card [card]="renda"></card>
   </div>
+  <div  class="sem-lancamento" *ngIf="rendas.tiposComum.length == 0">Sem lançamento no período selecionado.</div>
 </div>

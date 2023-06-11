@@ -6,7 +6,7 @@ import { TipoItemRxService } from './rx/tipoItemRxService';
 import { ApiConfiguration } from './api/api-configuration';
 import { BaseService } from './base.service';
 import { ErrosService } from './erros.service';
-import { ICartao, IMensal, ITipoItemMes } from '../interfaces/itipo-item-mes.interface';
+import { ICartao, IItensMes, IMensal, ITipoItemMes } from '../interfaces/itipo-item-mes.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -75,6 +75,24 @@ export class TipoItemMesService extends BaseService {
     this.tipoItemRxService.onIsLoading.next(true);
     this.validarToken(spinnerSubscription);
     return this.get<IMensal>(`/mensal/buscar/${data}`, null, null, super.getHeadersToken()).pipe(
+            tap(() => {
+              this.tipoItemRxService.onIsLoading.next(false);
+              this.ngZone.run(() => spinnerSubscription.unsubscribe());
+          }),
+            catchError((error) => {
+              this.errorHandle(error);
+              this.tipoItemRxService.onIsLoading.next(false);
+              this.ngZone.run(() => spinnerSubscription.unsubscribe());
+              return throwError(error);
+            })
+          )
+  }
+
+  getItensMes(): Observable<IItensMes[]>{
+    const spinnerSubscription: Subscription = this.spinner.spinner$.subscribe();
+    this.tipoItemRxService.onIsLoading.next(true);
+    this.validarToken(spinnerSubscription);
+    return this.get<IItensMes[]>(`/itensmes`, null, null, super.getHeadersToken()).pipe(
             tap(() => {
               this.tipoItemRxService.onIsLoading.next(false);
               this.ngZone.run(() => spinnerSubscription.unsubscribe());

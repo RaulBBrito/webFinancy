@@ -1,5 +1,6 @@
 export interface Mes {
-  mes: string;
-  descricao_mes: string;
-  ano: string;
+  id_mensal: string;  
+  mes: string;        
+  ano: string;         
+  dia_mes_ano: string;
 }

@@ -4,7 +4,6 @@ import { LoginService } from '@app/auth/services/login.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { BnNgIdleService } from 'bn-ng-idle';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private router: Router,
-    private idleService: BnNgIdleService
+    private router: Router
   ) { 
     if(this.loginService.getUsuarioLogado()){
       this.router.navigate(["/home"]);
@@ -32,7 +30,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-    this.idleService.stopTimer();
   }
 
 

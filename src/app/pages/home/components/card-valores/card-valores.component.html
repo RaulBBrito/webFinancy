@@ -1,5 +1,9 @@
 <div *ngIf="isTipoCartao" class="card-container-cartao">
-  <div class="card-container-cartao-titulo">Valores em cartões</div>
+  <div style="display: flex; flex-direction: row; align-items: start; width: 100%;" *ngIf="cardTipoCartao.tiposCartao.length > 0 ;">
+    <div class="card-container-cartao-titulo" style="padding: 0 5px; width: 10%;"> venc. </div>
+    <div class="card-container-cartao-titulo" style="padding: 0 5px; width: 90%"> descrição dos cartões</div>
+  </div>
+  
   <div *ngFor="let tipoCartao of cardTipoCartao.tiposCartao" class="card-container-cartao-body">
       <div class="font-data heigth-cartao">
         <div>{{tipoCartao.dia}}</div>
@@ -16,6 +20,7 @@
 </div>
 
 <div *ngIf="!isTipoCartao" class="card-container {{tipoCard ? 'card-container-despesas': ''}}">
+
   <div class="{{tipoCard ? 'color-white': ''}} font-data">
     <div>{{card.dia}}</div>
     <span>{{card.mes}}</span>

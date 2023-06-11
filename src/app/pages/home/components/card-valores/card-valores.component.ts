@@ -9,10 +9,15 @@ import { Card, TiposComumCartao } from '@app/core/interfaces';
 export class CardValoresComponent implements OnInit {
 
   @Input() card: TiposComumCartao = {};
-  @Input() cardTipoCartao: Card = {};
+  @Input() cardTipoCartao: Card = {
+    tiposComum: [],
+    tiposCartao: []
+  };
   @Input() isTipoCartao: boolean = false;
+  isListCartaoVazio: boolean = false;
   tipoCard: boolean = false;
   ngOnInit(): void {
+    this.isListCartaoVazio = this.cardTipoCartao?.tiposCartao?.length > 0;
     this.tipoCard = this.card.tipocard === 'D';
   }
 

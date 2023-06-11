@@ -1,10 +1,12 @@
+import { TabsModule } from '@app/shared/components/tabs';
 import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Mes } from '@app/core/interfaces';
-import { ISelectChaveValor } from '@app/core/interfaces/itipo-item-mes.interface';
+import { IFormDespesa, IItemMesC, ISelectChaveValor } from '@app/core/interfaces/itipo-item-mes.interface';
 import { TipoItemMesService } from '@app/core/services';
 import { CartaoService } from '@app/core/services/cartao.service';
+import { ItensMesService } from '@app/core/services/itens-mes.service';
 
 @Component({
   selector: 'app-dialog',
@@ -31,10 +33,13 @@ export class DialogComponent {
     private cartaoService: CartaoService,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Mes,
-    private dialogRef: MatDialogRef<DialogComponent>
+    private dialogRef: MatDialogRef<DialogComponent>,
+    private itensMesService: ItensMesService
   ){
-
-    console.log(data.mes);
+    /* data = id_mensal:    
+              mes:         
+              ano:         
+              dia_mes_ano: */
     this.createForm();
   }
 
@@ -62,7 +67,7 @@ export class DialogComponent {
       descricaoDespesa: new FormControl('', []),
       idRecurso:        new FormControl('1', []),
       idCartao:         new FormControl('', []),
-      idMensal:         new FormControl(("00" + this.data.mes).slice(-2), []),
+      idMensal:         new FormControl(this.data.mes, []),//("00" + this.data.mes).slice(-2)
       statusPagamento:  new FormControl('S', []),
     });
     this.formDataRenda = new FormGroup({
@@ -80,22 +85,35 @@ export class DialogComponent {
     return ctrl;
   }
 
-  onSubmit(form: any, tipoCadastro: string) {
-    console.log(form);
+  onSubmit(formulario: IFormDespesa, tipoCadastro: string) {
+    let itemMesCadastrar: IItemMesC = {}
 
-    this.tipoItemMesService.getMensal(this.data.ano+"-"+("00" + this.data.mes).slice(-2)+"-"+"01")
-      .subscribe((mensal) => {
-        
-        if(tipoCadastro === 'D'){
-          console.log("Cadastrar Dispesas");
-        }else{
-          console.log("Cadastrar Rendas");
-        }
+    if(tipoCadastro === 'D'){
+      itemMesCadastrar = {
+        desc_itens_mes: formulario.descricaoDespesa,
+        vlr_itens_mes: formulario.valorDespesa,
+        data_venc_itens_mes: formulario.dataVencDespesa,
+        data_pag_itens_mes: formulario.dataPagDespesa,
+        id_tipo_item_mes: "1",
+        id_recurso_itens: formulario.idRecurso,
+        id_cartao: formulario.idCartao,
+        id_mensal: this.data.id_mensal,
+        status_pag_itens_mes: formulario.statusPagamento
+      } 
+      this.itensMesService.cadastrarItemMes(itemMesCadastrar)
+      .subscribe(itemMes => {
+        console.table(itemMes);
+      });
+    }else{
+
+    }
+    //console.log(itemMesCadastrar);
     
-        this.createForm();
 
-      this.isSelectCartao = false;
-        });
+     //this.isSelectCartao = false;
+
+    /*this.tipoItemMesService.getMensal(this.data.ano+"-"+("00" + this.data.mes).slice(-2)+"-"+"01")
+      .subscribe((mensal) => { });*/
 
     
   }

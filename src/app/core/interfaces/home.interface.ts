@@ -10,8 +10,8 @@ export interface IValor {
 }
 
 export interface Card {
-  tiposComum?: TiposComumCartao[];
-  tiposCartao?: TiposComumCartao[];
+  tiposComum: TiposComumCartao[];
+  tiposCartao: TiposComumCartao[];
 }
 
 export interface TiposComumCartao {
