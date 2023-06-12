@@ -84,5 +84,10 @@ export interface IFormDespesa{
   statusPagamento: string,
   tituloDespesa: string,
   valorDespesa: string,
+  tituloRenda: string,
+  valorRenda: string,
+  dataVencRenda: string,
+  dataPagRenda: string,
+  descricaoRenda: string,
 }
 

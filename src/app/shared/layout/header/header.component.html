@@ -1,6 +1,6 @@
 <div class="header-home">
   <div class="content-home">
-    <div class="color-white">
+    <div class="color-white menu-barra">
         <app-menu></app-menu>
     </div>
     <div class="select-buttom">
@@ -17,13 +17,13 @@
     </div>
   </div>
   <div class="titulo-saldo color-white">Saldo atual em conta <br />
-    <span>{{saldo_mensal | currency : 'BRL'}}</span>
+    <span>{{saldo_mensal}}</span>
   </div>
 </div>
 <div class="header-valores">
-  <div class="barra-lateral"><span class="titulo-valores">Rendas</span> <br /> <span class="valores cor-verde">{{renda | currency : 'BRL'}}</span></div>
-  <div class="barra-lateral"><span class="titulo-valores">Despesas</span> <br /> <span class="valores cor-vermelho">{{despesa | currency : 'BRL'}}</span></div>
-  <div><span class="titulo-valores">Cartões</span> <br /> <span class="valores cor-vermelho">{{cartao | currency : 'BRL'}}</span></div>
+  <div class="barra-lateral"><span class="titulo-valores">Rendas</span> <br /> <span class="valores cor-verde">{{renda}}</span></div>
+  <div class="barra-lateral"><span class="titulo-valores">Despesas</span> <br /> <span class="valores cor-vermelho">{{despesa}}</span></div>
+  <div><span class="titulo-valores">Cartões</span> <br /> <span class="valores cor-vermelho">{{cartao}}</span></div>
 
 </div>
 <!--<p>You selected: {{ mesAnoSelecionado | json }}</p>-->

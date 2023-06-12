@@ -61,21 +61,21 @@ export class DialogComponent {
     this.formDataDespesa = new FormGroup({
       tituloDespesa:    new FormControl('', [Validators.required, Validators.minLength(5),]),
       valorDespesa:     new FormControl('', [Validators.required,]),
-      categoria:        new FormControl('', [Validators.required]),
+      categoria:        new FormControl('0', [Validators.required]),
       dataVencDespesa:  new FormControl('', [Validators.required,]),
       dataPagDespesa:   new FormControl('', []),
       descricaoDespesa: new FormControl('', []),
       idRecurso:        new FormControl('1', []),
-      idCartao:         new FormControl('', []),
+      idCartao:         new FormControl('0', []),
       idMensal:         new FormControl(this.data.mes, []),//("00" + this.data.mes).slice(-2)
       statusPagamento:  new FormControl('S', []),
     });
     this.formDataRenda = new FormGroup({
       tituloRenda:    new FormControl('', [Validators.required, Validators.minLength(5),]),
       valorRenda:     new FormControl('', [Validators.required,]),
-      categoria:      new FormControl('', [Validators.required]),
       dataVencRenda:  new FormControl('', [Validators.required,]),
       dataPagRenda:   new FormControl('', []),
+      statusPagamento:  new FormControl('S', []),
       descricaoRenda: new FormControl('', []),
     });
   }
@@ -94,20 +94,31 @@ export class DialogComponent {
         vlr_itens_mes: formulario.valorDespesa,
         data_venc_itens_mes: formulario.dataVencDespesa,
         data_pag_itens_mes: formulario.dataPagDespesa,
-        id_tipo_item_mes: "1",
+        id_tipo_item_mes: formulario.categoria,
         id_recurso_itens: formulario.idRecurso,
         id_cartao: formulario.idCartao,
         id_mensal: this.data.id_mensal,
         status_pag_itens_mes: formulario.statusPagamento
       } 
+    }else{
+      itemMesCadastrar = {
+        desc_itens_mes: formulario.tituloRenda,
+        vlr_itens_mes: formulario.valorRenda,
+        data_venc_itens_mes: formulario.dataVencRenda,
+        data_pag_itens_mes: formulario.dataPagRenda,
+        id_tipo_item_mes: "2",
+        id_recurso_itens: "2",
+        id_cartao: "0",
+        id_mensal: this.data.id_mensal,
+        status_pag_itens_mes: formulario.statusPagamento
+      } 
+    }
+
       this.itensMesService.cadastrarItemMes(itemMesCadastrar)
       .subscribe(itemMes => {
         console.table(itemMes);
       });
-    }else{
-
-    }
-    //console.log(itemMesCadastrar);
+    console.log(itemMesCadastrar);
     
 
      //this.isSelectCartao = false;
@@ -136,6 +147,6 @@ export class DialogComponent {
   }
 
   fechar(){
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 }

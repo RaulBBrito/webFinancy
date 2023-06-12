@@ -57,7 +57,7 @@ export class TipoItemMesService extends BaseService {
     this.tipoItemRxService.onIsLoading.next(true);
     this.validarToken(spinnerMensalSubscription);
     return this.get<IMensal[]>(`/mensal`, null, null, super.getHeadersToken()).pipe(
-            tap(() => {
+            tap((result) => {
               this.tipoItemRxService.onIsLoading.next(false);
               this.ngZone.run(() => spinnerMensalSubscription.unsubscribe());
           }),
@@ -93,7 +93,7 @@ export class TipoItemMesService extends BaseService {
     this.tipoItemRxService.onIsLoading.next(true);
     this.validarToken(spinnerSubscription);
     return this.get<IItensMes[]>(`/itensmes`, null, null, super.getHeadersToken()).pipe(
-            tap(() => {
+            tap((result) => {
               this.tipoItemRxService.onIsLoading.next(false);
               this.ngZone.run(() => spinnerSubscription.unsubscribe());
           }),

@@ -36,10 +36,10 @@ export class HeaderComponent implements OnInit {
     cartao: "0.0"
   };
 
-  public renda: number;
-  public despesa: number;
-  public cartao: number;
-  public saldo_mensal: number;
+  public renda: string;
+  public despesa: string;
+  public cartao: string;
+  public saldo_mensal: string;
 
   constructor(private fb: FormBuilder,
     private dialog: MatDialog,
@@ -81,12 +81,29 @@ export class HeaderComponent implements OnInit {
   }
 
   getMes(item: IMensal){
+    this.tipoItemMesService.getListMensal()
+      .subscribe((mensal) => {
+        this.mesesAno = mensal
+        this.mesAtual = this.mesesAno.filter(mes => mes.id_mensal == item.id_mensal)[0];
+        this.mesAnoSelecionado = this.mesAtual;
+        this.renda= this.formatarValorReal(parseFloat(this.getValores('renda')));
+        this.despesa= this.formatarValorReal(parseFloat(this.getValores('despesa')));
+        this.cartao= this.formatarValorReal(parseFloat(this.getValores('cartao')));
+        this.saldo_mensal= this.formatarValorReal(parseFloat(this.getValores('mensal')));
+        HeaderComponent.mesSelecionadoHeader.emit(this.mesAtual);
+      });
+  }
+
+  getMesValores(item: IMensal){
+    
     this.mesAnoSelecionado = item;
-    this.renda= parseInt(this.getValores('renda'));
-    this.despesa= parseInt(this.getValores('despesa'));
-    this.cartao= parseInt(this.getValores('cartao'));
-    this.saldo_mensal= parseInt(this.getValores('mensal'));
+    this.renda= this.formatarValorReal(parseFloat(this.getValores('renda')));
+    this.despesa= this.formatarValorReal(parseFloat(this.getValores('despesa')));
+    this.cartao= this.formatarValorReal(parseFloat(this.getValores('cartao')));
+    this.saldo_mensal= this.formatarValorReal(parseFloat(this.getValores('mensal')));
+  
     HeaderComponent.mesSelecionadoHeader.emit(item);
+    
   }
 
   getListaMensal(){
@@ -103,13 +120,13 @@ export class HeaderComponent implements OnInit {
     this.mesAtual = this.mesesAno.filter(mes => mes.data_mes_ano_mensal == dataAtual)[0];
     this.mesAnoSelecionado = this.mesAtual;
 
-    this.renda= parseInt(this.getValores('renda'));
-    this.despesa= parseInt(this.getValores('despesa'));
-    this.cartao= parseInt(this.getValores('cartao'));
-    this.saldo_mensal= parseInt(this.getValores('mensal'));
+    this.renda= this.formatarValorReal(parseFloat(this.getValores('renda')));
+    this.despesa= this.formatarValorReal(parseFloat(this.getValores('despesa')));
+    this.cartao= this.formatarValorReal(parseFloat(this.getValores('cartao')));
+    this.saldo_mensal= this.formatarValorReal(parseFloat(this.getValores('mensal')));
 
     if(this.mesAnoSelecionado?.data_mes_ano_mensal && this.mesAnoSelecionado?.data_mes_ano_mensal != ''){
-      this.getMes(this.mesAnoSelecionado);
+      this.getMesValores(this.mesAnoSelecionado);
     }else{
       let data = new Date();
       let mesAtual = data.getFullYear()+"-"+String(data.getMonth()+1).padStart(2,'0')+"-"+"01";
@@ -124,7 +141,7 @@ export class HeaderComponent implements OnInit {
         }
         this.mesesAno.push(this.mesAnoSelecionado);
         this.mesAtual = this.mesAnoSelecionado;
-        this.getMes(this.mesAnoSelecionado);
+        this.getMesValores(this.mesAnoSelecionado);
       
     }
 
@@ -134,6 +151,7 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '90%',
       height: '',
+      disableClose: true,
       data: { id_mensal:   this.mesAnoSelecionado.id_mensal, 
               mes:         this.mesAnoSelecionado.data_mes_ano_mensal.slice(5, -3), 
               ano:         this.mesAnoSelecionado.data_mes_ano_mensal.slice(0, -6),
@@ -142,8 +160,19 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      this.getMes({
+        id_mensal: result.id_mensal,
+        data_mes_ano_mensal: "",
+        vlrt_renda_mensal: "",
+        vlrt_despesa_mensal: "",
+        vlrt_cartao_mensal: "",
+        vlr_saldo_conta_mensal: ""
+      })
     })
+  }
+
+  formatarValorReal(valorMonetario: number): string {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valorMonetario);
   }
 
 }

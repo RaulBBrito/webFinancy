@@ -104,12 +104,12 @@
                     type="text"
                     [required]="true"
                     [control]="$any(formDataRenda.get('valorRenda'))"></app-input-customer>
-                  <app-input-customer
+                  <!--<app-input-customer
                     label="Categoria"
                     placeholder="Selecione a categoria"
                     [type]="'select'"
                     [value]="tipoCategoria"
-                    [control]="$any(formDataRenda.get('categoria'))"></app-input-customer>
+                    [control]="$any(formDataRenda.get('categoria'))"></app-input-customer>-->
                   <app-input-customer
                     label="Data de vencimento"
                     placeholder=""
@@ -122,6 +122,27 @@
                     type="text"
                     [required]="true"
                     [control]="$any(formDataRenda.get('dataPagRenda'))"></app-input-customer>
+                  <div class="status-pagamento form-control">
+                    <div>
+                      <label class="form-label" for="StatusPagamento">Está pago?:</label>
+                    </div>
+                    <div style="padding-left: 16px;">
+                      <input  class="input-radio" type="radio"
+                              name="inlineRadioOptions" id="inlineRadio1" 
+                              value="S" autocompleted="" [formControl]="$any(formDataRenda.get('statusPagamento'))">
+                    </div>
+                    <div style="margin-top: -4px; padding-left: 2px;">
+                      <label class="form-check-label" for="inlineRadio1" >Sim</label>
+                    </div>
+                    <div style="padding-left: 16px;">
+                      <input  class="input-radio" type="radio" 
+                              name="inlineRadioOptions" id="inlineRadio2" 
+                              value="N" autocompleted="" [formControl]="$any(formDataRenda.get('statusPagamento'))">
+                    </div>
+                    <div style="margin-top: -4px; padding-left: 2px;">
+                      <label class="form-check-label" for="inlineRadio2" >Não</label>
+                    </div>
+                  </div>
                   <app-input-customer
                     label="Descrição"
                     placeholder=""
